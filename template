@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+body {max-width:800px; margin: auto}
+body {
+    padding-top: 15px; 
+}
+pre {
+    background-color: whitesmoke;
+    padding: 10px;
+    white-space: pre-wrap;
+}
+blockquote {
+    border-left: 0.5em solid black;
+    padding-left: 1em;
+    margin-left: 1em;
+}
+p {
+    text-align:justify
+}
+</style>
+<link href="http://bartekbrak.github.io/images/favicon.ico" rel="icon">
+</head>
+<body>
+%(body)s
+<hr>
+<!--<ul>
+    <a href="index.html">Index</a> -
+    <a href="snippets.html">Snippets</a> -
+    <a href="blog.html">Blog</a> -
+    <a href="links.html">Links</a> -
+    <a href="today.html">Today I read</a> -
+    <a href="aboutme.html">About me</a>
+</ul>
+-->
+bartekbrak1@gmail.com
+</body>
+</html>

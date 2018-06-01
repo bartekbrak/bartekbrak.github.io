@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+body {max-width:800px; margin: auto}
+body {
+    padding-top: 15px; 
+}
+pre {
+    background-color: whitesmoke;
+    padding: 10px;
+    white-space: pre-wrap;
+}
+blockquote {
+    border-left: 0.5em solid black;
+    padding-left: 1em;
+    margin-left: 1em;
+}
+p {
+    text-align:justify
+}
+</style>
+<link href="http://bartekbrak.github.io/images/favicon.ico" rel="icon">
+</head>
+<body>
+<h1>[pl] PyCharm klawiaturą. Warsztat dla kolegów.</h1>
+<h1>Wstęp.</h1>
+<ol>
+<li>Ja tak myślę, to wszystko jest subiektywne ale wierz mi, robie to dla
+siebie i dla Ciebie.</li>
+<li>Filozofia tegoż, potrzebujesz decyzji, ona się zwróci, tylko musisz mądrą decyzje podjąć.</li>
+<li>Da się prawie wszystko, prawie wszystko warto.</li>
+<li>Korzystaj ze standardowego rozkładu skrutów tak bardzo jak tylko możesz,
+jest to przemyślany układ -
+   będziesz mógł wymieniać się doświadczeniem z kolegami i koleżanką.</li>
+</ol>
+<p>Moje modyfikacje to:
+   - <code>Alt + a</code> - annotacje
+   - <code>Alt + w</code> - zamknij zakładkę, bo <code>Ctrl + F4</code> łamie palce.</p>
+<ol>
+<li>Wydrukuj sobie ściągę (ma tylko standardowy układ). <code>Help -&gt; Keymap
+Reference</code>.</li>
+<li>
+<p>Dowiedz się co zasłania skróty.</p>
+<p>W Ubuntu, gnome-shell-classic:</p>
+<p><code>gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-left
+"[]"</code></p>
+<p>Moje doświadczenia spisałem <a href="http://bartekbrak.github.io/notes.html#how-to-disable-mate-workspace-key-shortcuts">o
+tu</a></p>
+</li>
+<li>
+<p>Wiedz o <code>Command Palette</code> pod <code>Ctrl+Shift+A</code>.</p>
+<p>Wyszukaj tam:
+- <code>Settings</code>, jest kilka, jeden ma skrót
+- <code>Run Conflict Resolver</code>, o... nie ma skrótu</p>
+</li>
+<li>
+<p>Naucz sie wyszukiwać w <code>Settings -&gt; Keymap</code>, w obie strony.</p>
+</li>
+<li>
+<p><a href="https://en.wikipedia.org/wiki/Mnemonics_(keyboard)">Mnemonics (keyboard)</a>
+raczej znasz?</p>
+</li>
+<li>To wszystko nie ma sensu jak sobie Interpretera nie ustawisz, no weź se ustaw</li>
+<li>Filozofia 2, Że niby programista co duzo pisze albo dużo z IDE musi korzystać robi cos nie tak... tak, ale</li>
+</ol>
+<h1>Jedziemy:</h1>
+<h2>Ogólne</h2>
+<ul>
+<li><code>Alt 1, 2, 3</code>, ... - panele numerowane, dodałbym sobie bazę danych na zero
+czy co tam lubisz, (tu demo wyszukiwanie w tę druga strone w Keymap, <code>Alt + 0</code>)</li>
+<li>Powyższe podwójnie przełącza.</li>
+<li><code>Shift + Esc</code> - wróć do edycji, raz na 177 razy nie działa.</li>
+</ul>
+<h2>Nawigacja w kodzie</h2>
+<ul>
+<li>
+<p><code>Ctrl + n</code>, <code>Ctrl + Shift + n</code>, <code>Ctrl + Alt + Shift + n</code>,</p>
+<ul>
+<li>jak działają przy zaznaczonym tekście,</li>
+<li>że nawet da się w szablonach</li>
+<li>że nawet coś spoza znajdziesz</li>
+<li>to powinien byc Twój główny sposób nawigacji</li>
+</ul>
+</li>
+<li>
+<p><code>Ctrl + b</code>, <code>Ctrl + Alt + ◀</code>, <code>Ctrl + Alt + ▶</code>, wgłąb i z powrotem</p>
+</li>
+<li><code>Ctrl + tab</code>, The switcher, <code>Alt + ◀</code>, <code>Alt + ▶</code>, pomiędzy zakładkami,</li>
+<li><code>Alt + ▲</code>, <code>Alt + ▼</code>, pomiędzy metodami, a między klasami nie ma, ale jak się złoży wszystko to łatwo kursorem jechać, a
+  miałeś <code>Ctrl + n</code> robić</li>
+<li><code>F2</code>, <code>Alt + Enter</code>, lint + naprawianie</li>
+<li><code>Alt + j</code>, <code>Ctrl + Alt + Shif + j</code>, <code>Ctrl + Ctrl</code>, - multikursor</li>
+<li><code>Ctrl + g</code> idź do linii</li>
+<li><em>Implementation</em> - <code>Ctrl + Alt + b</code>, co dziedziczy?</li>
+<li><code>Ctrl + Shift + b</code> - <em>Type Declaration</em>, co to?</li>
+<li><code>Ctrl + F12</code> - struktura, najłatwiej wyszukac tak metodę bo jets fuzzy</li>
+</ul>
+<blockquote>
+<p>In PyCharm, this action is only applicable to JavaScript.</p>
+</blockquote>
+<ul>
+<li><code>Ctrl + Shift + Numpad-</code>, <code>Ctrl + Shift + Numpad+</code>, składanie</li>
+<li><code>Ctrl + Shift + M</code> - <em>Move Caret to Matching Brace</em> wow, lata po nawiasach!</li>
+<li>Historia wklejania:  <code>Ctrl + Shift + v</code></li>
+<li>kopiowanie referencji, po co to? importy, testy, <code>Ctrl + Shift + C</code>, <code>Ctrl + Alt + Shift + C</code></li>
+<li>nawigowanie po zmianach - <code>Ctrl + Alt + Shift + ▲▼</code></li>
+</ul>
+<h1>Refactoring menu</h1>
+<p><code>Ctrl + Alt + Shift + T</code>  i eksploruj
+- Move
+- Rename
+- extract variable  - reporting.views.report_edit
+- extract constant
+- extract method - reporting.chargeable_report.format_for_output
+- inline - po co?</p>
+<hr>
+<!--<ul>
+    <a href="index.html">Index</a> -
+    <a href="snippets.html">Snippets</a> -
+    <a href="blog.html">Blog</a> -
+    <a href="links.html">Links</a> -
+    <a href="today.html">Today I read</a> -
+    <a href="aboutme.html">About me</a>
+</ul>
+-->
+bartekbrak1@gmail.com
+</body>
+</html>

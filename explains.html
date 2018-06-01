@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+body {max-width:800px; margin: auto}
+body {
+    padding-top: 15px; 
+}
+pre {
+    background-color: whitesmoke;
+    padding: 10px;
+    white-space: pre-wrap;
+}
+blockquote {
+    border-left: 0.5em solid black;
+    padding-left: 1em;
+    margin-left: 1em;
+}
+p {
+    text-align:justify
+}
+</style>
+<link href="http://bartekbrak.github.io/images/favicon.ico" rel="icon">
+</head>
+<body>
+<h1>Bartek explains</h1>
+<p>I get asked about technical problems. Often it is possible to answer using sample code. Rather
+than sending the samples to those who ask, I will publish them here so I can reference them when 
+asked again for the same stuff.</p>
+<h3>An example of monkey-patching</h3>
+<pre><code>class StupidClass:
+    def stupid_method(self, some_arg):
+        print(&quot;this method is stupid, we want to replace it&quot;)
+
+def good_function(some_arg):
+    print(&quot;this method is clever, it replaces the other one&quot;)
+
+sc = StupidClass()
+sc.stupid_method('whatever')
+# monkey patch now
+sc.__some_name = sc.stupid_method
+sc.stupid_method = good_function
+sc.stupid_method('whatever')
+# and back, not always needed
+sc.stupid_method = sc.__some_name
+</code></pre>
+
+<p>out</p>
+<pre><code>this method is stupid, we want to replace it
+this method is clever, it replaces the other one
+</code></pre>
+<hr>
+<!--<ul>
+    <a href="index.html">Index</a> -
+    <a href="snippets.html">Snippets</a> -
+    <a href="blog.html">Blog</a> -
+    <a href="links.html">Links</a> -
+    <a href="today.html">Today I read</a> -
+    <a href="aboutme.html">About me</a>
+</ul>
+-->
+bartekbrak1@gmail.com
+</body>
+</html>

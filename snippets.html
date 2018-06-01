@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+body {max-width:800px; margin: auto}
+body {
+    padding-top: 15px; 
+}
+pre {
+    background-color: whitesmoke;
+    padding: 10px;
+    white-space: pre-wrap;
+}
+blockquote {
+    border-left: 0.5em solid black;
+    padding-left: 1em;
+    margin-left: 1em;
+}
+p {
+    text-align:justify
+}
+</style>
+<link href="http://bartekbrak.github.io/images/favicon.ico" rel="icon">
+</head>
+<body>
+<h1>Notes</h1>
+<p>This is a collection of snippets and little things I discovered that might
+come handy one day. All conveniently put together on one page to make searching
+easy.</p>
+<h2>ipython style bash history</h2>
+<pre><code>bind '&quot;\e[A&quot;: history-search-backward';bind '&quot;\e[B&quot;: history-search-forward'
+</code></pre>
+
+<h2>Hot to scan using Mustek 1200 Ub PLus</h2>
+<pre><code># root
+/usr/share/sane/gt68xx
+wget http://www.meier-geinitz.de/sane/gt68xx-backend/firmware/sbfw.usb
+
+sed -i.backup -e 's/^#override &quot;mustek-scanexpress-1200-ub-plus&quot;/override &quot;mustek-scanexpress-1200-ub-plus&quot;/' /etc/sane.d/gt68xx.conf
+
+# user
+# Re-plug USB cable connecting the scanner
+simple-scan
+</code></pre>
+
+<h2>add user to group</h2>
+<pre><code>usermod -a -G users bartek
+</code></pre>
+
+<p><em>I have looked up this particular snippet way too many times</em></p>
+<h2>Remove hrefs, useful for trans_now</h2>
+<pre><code>var anchors = document.getElementsByTagName(&quot;a&quot;);
+for (var i = 0; i &lt; anchors.length; i++) {
+    var elem = anchors[i];
+    elem.onclick = function() {return(false);};
+    console.log(elem.href, 'removed');
+    elem.removeAttribute(&quot;href&quot;);
+}
+</code></pre>
+
+<p>bookmarklet <a href="javascript:var anchors = document.getElementsByTagName('a'); for (var i = 0; i < anchors.length; i++) {var elem = anchors[i]; elem.onclick = function() {return(false);}; console.log(elem.href, 'removed'); elem.removeAttribute('href'); }">rm hrefs</a></p>
+<h2>Follow logs of a systemd service</h2>
+<pre><code>journalctl -fu NetworkManager.service
+</code></pre>
+
+<h2>Fix torrent files</h2>
+<pre><code>sudo sed -i &quot;s, %U, '%U',&quot; /usr/share/applications/transmission-qt.desktop
+xdg-mime default transmission-qt.desktop x-scheme-handler/magnet
+</code></pre>
+
+<h2>Tag flac/mp3 files</h2>
+<p><code>sudo apt-get install easytag</code></p>
+<h2>useradd or adduser</h2>
+<p>adduser</p>
+<h2>Install newest Mercurial on Ubuntu 14.04, system wide, with thg.</h2>
+<pre><code>$ hg version
+Mercurial Distributed SCM (version 2.8.2)
+$ sudo apt-add-repository ppa:mercurial-ppa/releases
+$ apt update
+$ apt upgrade # will remove thg as it is not compatible
+$ hg version
+Mercurial Distributed SCM (version 3.8.4)
+# There is no PPA for thg
+$ hg clone https://bitbucket.org/tortoisehg/thg ~/opt/tortoisehg
+$ ln -s ~/opt/tortoisehg/thg ~/bin
+# it sometimes just works, maybe Qt4 is required.
+</code></pre>
+
+<h2>In django, context is shared between included templates.</h2>
+<p>When <code>{% include "child_template.html "%}</code> is used the parent template context
+is available inside the child template. This sucks. When you have many templates included you will 
+have to be carefyul with clenaing the context.</p>
+<pre><code># context
+c = {
+    'a': 'a value',
+    'b': 'b value'
+}
+
+# parent.html
+Parent: {{ a }}
+&lt;br&gt;
+{% include &quot;child.html&quot; %}
+
+# child.html
+Child: {{ b }}
+
+# Rendered:
+Parent: a value
+&lt;br&gt;
+Child: b value
+</code></pre>
+
+<h3>Now is, context created inside a template shared as well?</h3>
+<p>The first sentence od <a href="https://docs.djangoproject.com/en/1.9/ref/templates/builtins/#include">Built-in template tags and filters/include</a>
+says it does but let's see for ourselves:</p>
+<blockquote>
+<p>Loads a template and renders it <em>with</em> the current context.</p>
+</blockquote>
+<pre><code>from django.template import Template, Context
+outer = '''
+{{a}} 
+{% with &quot;the_b&quot; as b%}
+    {% include included %}
+{% endwith %}
+'''
+inner = '''
+inside {{ b }}
+'''
+print Template(outer).render(Context({
+    'a': 'in outer', 
+    'included': Template(inner)
+}))
+</code></pre>
+
+<h2>unbreak not-starting pycharm</h2>
+<p><code>/usr/local/bin/charm</code> is a runner, wrapper script that checks whether PyCharm
+isn't already started. If you quit PyCharm abruptly, it will silently fail.
+Remove these files to reset its "running" status:</p>
+<pre><code>/home/bartek/.PyCharm2016.1/config/port
+/home/bartek/.PyCharm2016.1/system/token
+</code></pre>
+
+<h2>go down git tags</h2>
+<pre><code>for x in $(git tag|tac); do read -p $x; git co $x; done
+</code></pre>
+
+<h2>Use dnsmasq</h2>
+<p>Let all <code>.lol</code> domains pont localy. </p>
+<pre><code>apt install dnsmasq
+sudo vim /etc/dnsmasq.d/me_is_local
+# address=/lol/127.0.0.1
+service dnsmasq restart
+</code></pre>
+
+<h2>bash slugify</h2>
+<pre><code>slugify() {
+  if [ $# -eq 0 ]
+  then
+      read data
+  else
+      data=$@
+  fi
+  echo $data | sed -e 's/[^[:alnum:]]/_/g' | tr -s '_' | tr A-Z a-z
+}
+</code></pre>
+
+<h2>Make google always verbatim.</h2>
+<p><a href="https://chrome.google.com/webstore/detail/occcfdnjdbgjglcbpolkmjnjillkgbcm">chrome extension</a></p>
+<p>also <a href="https://productforums.google.com/forum/#!msg/websearch/q7NK4RduwM0/LndTBrveLdMJ">this</a></p>
+<h2>Dirty way to enable nginx to access user folders</h2>
+<pre><code class="bash">usermod -a -G bartek www-data
+chmod g+rx /home/bartek
+$ grep -A 3 site_media /etc/nginx/sites-available/this_site 
+    location /site_media {
+        alias /home/bartek/workspace/this_site/site_media;
+    }
+</code></pre>
+
+<h2>Do something in all subdirs</h2>
+<pre><code>for x in ls *; do pushd $x; hg revert setup.py; popd; done
+</code></pre>
+
+<h2>defaultdict of defaultdict</h2>
+<pre><code>group_ids = defaultdict(lambda: defaultdict(list))
+# pprint
+pprint({k: dict(v) for k, v in dict(group_ids).items()})
+# or, ugly
+pprint({
+    k:{k2:v2 for k2, v2 in v.items()} 
+    for k, v 
+    in group_ids.items()
+})
+</code></pre>
+
+<h2>Get ibus 1.5.11 on Ubuntu</h2>
+<pre><code class="bash">wget https://github.com/ibus/ibus/releases/download/1.5.11/ibus-1.5.11.tar.gz
+
+checking for XML::Parser... configure: error: XML::Parser perl module is required for intltool
+sudo perl -MCPAN -e shell
+# autoconf yes, enter, enter
+# at prompt cpan[1]&gt;
+install XML::Parser
+
+wget http://ftp.gnome.org/pub/gnome/sources/intltool/0.35/intltool-0.35.5.tar.gz
+
+&gt; No package 'gtk+-2.0' found
+apt-get install libgtk2.0-dev
+
+&gt; No package 'gtk+-3.0' found
+apt-get install libgtk-3-dev  # see what they did with dashes? :) nice people
+
+&gt; No package 'dconf' found
+$ ./configure --disable-dconf
+
+&gt; No package 'libnotify' found
+$ apt-get install libnotify-dev
+</code></pre>
+
+<h2>Why does unicode_literals differ form prefixing u in py.test</h2>
+<p>Consider:</p>
+<pre><code class="python">from __future__ import unicode_literals
+def test_unicode():
+    s = 'ł'
+    print type(s), s, repr(s)
+</code></pre>
+
+<p>and</p>
+<pre><code class="python">def test_unicode():
+    s = u'ł'
+    print type(s), s, repr(s)
+</code></pre>
+
+<p>I assumed these should produce same results, they don't. Why? Py.test fails?</p>
+<h2>jQuery .data('something') isn’t the same as .attr('data-something')</h2>
+<p>https://forum.jquery.com/topic/jquery-data-caching-of-data-attributes</p>
+<p>So setting via <code>data-*</code> and retrieving via <code>.data()</code> will get you in trouble. 
+Just be consistent. I don't understand the reasoning behind this. :/</p>
+<h2>Sticky virtualenvs for virtualenvwrapper</h2>
+<pre><code class="shell">$ cat ~/.virtualenvs/postactivate 
+#!/bin/bash
+echo -n &quot;$(basename $VIRTUAL_ENV)&quot; &gt; ~/.virtualenvs/.last
+
+$ cat ~/.virtualenvs/.last
+wi-tex
+
+$ tail -n 1 ~/.bashrc 
+workon $(cat ~/.virtualenvs/.last)
+</code></pre>
+
+<h2>Lat PyCharm discover virtualenvs when started from sxhkd.</h2>
+<p>PyCharm needs env var <code>WORKON_HOME</code> to be set to discover virtualenv paths. 
+A prepopulated list of them appears in settings and is convenient to use when creating new projects. 
+So if you start pycharm by, let's say a keyboard shortcut, be sure to pass it:</p>
+<pre><code class="shell">$ grep Exec ~/.config/autostart/sxhkd.desktop
+Exec=env WORKON_HOME=/home/bartek/.virtualenvs sxhkd
+</code></pre>
+
+<h2>List directories only</h2>
+<pre><code class="shell">ls -d */
+</code></pre>
+
+<h2>Getting Corona SDK to run under Linux again (compiling wine)</h2>
+<p>Trying to run Corona SDK under linux via Wine (virtualbox won't run die to
+opengl). I managed that on last machine but time went on, ubuntu 15.04 got
+released, new version of wine was published... and official apt package does
+not work anymore. Neither does PPA wine1.7. So I got to compiling. Compiling
+wine from source without reading their compiling guide that I didn't find first
+is a nightmare. I finally read it and they offered a single most amazing piece
+of edvice. If there is a PPA there is a good chance that they put all the deps
+in their source PPA. Just uncomment the line with src in wine apt list and</p>
+<pre><code class="shell">add-apt-repository --yes ppa:ubuntu-wine/ppa
+vim /etc/apt/sources.list.d/ubuntu-wine-ubuntu-ppa-vivid.list
+# uncomment deb-src line
+apt-get build-dep wine1.7
+</code></pre>
+
+<p>and no more missing deps during package configure.  The whole mess was due to
+other mess with SSL recently. I assume some libraries were security patched and
+wine with corona stopped working with SSl connections which is needed. This was
+signalled via missing gnutls during runtime. I just assume that they didn't
+compile gnutls support in their PPA deb. I'll see soon if self-compiled binary
+does not have this error.  The above helps building the 64bit version which is
+buggy and didn't work in the end. Building 32 bit version on 64bit machine was
+a nightmare but worked as a last resort. It involved lxc containers and lots of
+time. </p>
+<p>http://wiki.winehq.org/WineOn64bit#head-ec78c77745c37a264ed79173d9704efc286514fc</p>
+<h2>More useful gsettings</h2>
+<p>For those of you using gnome shell [classic]</p>
+<pre><code class="shell">gsettings set org.gnome.nautilus.preferences enable-delete true
+gsettings set com.canonical.desktop.interface scrollbar-mode normal
+</code></pre>
+
+<p>If you completely hate trash and have an hour to spare and you are an OCD:
+<a href="http://www.theitcommunity.com/wiki/Globally_disable_GNOME%27s_Trash_in_Debian-based_distributions">go here</a>
+as your only option.</p>
+<h2>Installing mysql on default Vagrantfile will fail</h2>
+<p>Due to insufficient memory as demsg shows, in your <code>Vagrantfile</code>:</p>
+<pre><code>  config.vm.provider &quot;virtualbox&quot; do |v|
+    # mysql requires at least that much
+    v.memory = 1024
+  end
+</code></pre>
+
+<h2>What packages have you ever installed on your system?</h2>
+<pre><code>zgrep ' install ' /var/log/dpkg.log* | awk '{print $4}' | sed 's/:.*//' | sort
+</code></pre>
+
+<h2>Flatten tree directory content:</h2>
+<p><code>find . -type f -exec mv "{}" -t . \;</code></p>
+<h2>Get audio of mp4 files</h2>
+<p>Useful to get audio from coursera content:</p>
+<pre><code class="bash">for f in *.mp4
+do 
+    ffmpeg -i &quot;$f&quot; -vn -acodec copy &quot;${f/%mp4/m4a}&quot;
+done
+</code></pre>
+
+<h2>Does mongoengine's <code>values_list('sth')</code> imply <code>only('sth')</code> ?</h2>
+<p>It does:</p>
+<pre><code class="python">In [26]: Resource.objects(slug='X').only('slug').values_list('slug').explain() == \
+   ....:     Resource.objects(slug='X').only('slug').explain() == \
+   ....:     Resource.objects(slug='X').values_list('slug').explain()
+Out[26]: True
+</code></pre>
+
+<p>Comparing outputs of explain is sometimes silly and dangerous but it did the trick this time.</p>
+<h2>Get e-mails of all your coworkers from the list of git projects you have on your drive</h2>
+<pre><code class="bash">for repo in project1 project2 project3
+do 
+    pushd $repo &gt; /dev/null
+    git log --format='%ae'
+    popd &gt; /dev/null
+done | sort -u | uniq
+</code></pre>
+
+<h2>monitor dd</h2>
+<p><code>sudo kill -USR1 $(pgrep ^dd)</code></p>
+<h2>In Ipython Download a list of youtube podcasts, convert to mp3, rename to order.</h2>
+<pre><code class="python">#/usr/bin/env ipython3
+# Download a list of youtube podcasts, convert to mp3, rename to order
+import os, regex
+
+# get the playlist of Tomasz Kopyra Blog Q&amp;A series, takes very long
+#!youtube-dl 'https://www.youtube.com/playlist?list=PLJVfE77NnRt7bWvJhqCGqB9XQ-MAhxape'
+
+ls -1 | head
+[100 pytań do kopyra] 43. odcinek-1tGxCXP4ezY.mp3
+[100 pytań do kopyra] 45. odcinek-1T40CaUoG58.mp3
+[100 pytań do kopyra] 47. odcinek-c0EvfQ7wNSM.mp3
+[100 pytań do kopyra] 59. odcinek-wCI6Ds8NMmM.mp3
+100 pytań do kopyra - odc. 10.-cLDDtEm2kEo.mp3
+100 pytań do kopyra - odc. 11-mvGLBS1I8QU.mp3
+100 pytań do kopyra - odc. 12-ZIN-GDjvTH0.mp3
+100 pytań do kopyra odc. 13.-H2cQ1j5hvEI.mp3
+100 pytań do kopyra odc. 14.-Uo76D513eJ8.mp3
+100 pytań do kopyra odc. 15.-52QMYRK6lVk.mp3
+
+files = !ls
+
+# use regex rather than re to redefine named group &quot;no&quot;
+VOL_NO = regex.compile(
+    '(?:'
+    'odcinek\s*(?P&lt;no&gt;\d+)'
+    '|(?P&lt;no&gt;\d+)\.\s*odcinek'
+    '|odc.\s*(?P&lt;no&gt;\d+)'
+    ')'
+)
+
+for fname in files:
+    vol_no = VOL_NO.search(fname).group('no')
+    os.rename(fname, 'kopyr_qa_%s.mp3' % vol_no.zfill(2))
+
+ls -1 | head    
+kopyr_qa_01.mp3
+kopyr_qa_02.mp3
+kopyr_qa_03.mp3
+kopyr_qa_04.mp3
+kopyr_qa_05.mp3
+kopyr_qa_06.mp3
+kopyr_qa_07.mp3
+kopyr_qa_08.mp3
+kopyr_qa_09.mp3
+kopyr_qa_10.mp3
+</code></pre>
+
+<h2>Reset terminal from Python</h2>
+<p>When you're debugging using [i]pdb and the process get restarted, you will 
+end up with no carret, bash <code>reset</code> solves this but what if you don't want
+to leave the debugger?</p>
+<pre><code class="python">import os; os.system('reset')
+</code></pre>
+
+<p>Obviously, with caret gone, you have to type it "blind". </p>
+<h2>Dumb check which package version broke the API.</h2>
+<pre><code class="shell">
+tags=$(
+    git ls-remote --tags https://github.com/bokeh/bokeh.git\
+    | awk '{print $2;}' \
+    | egrep '/([0-9.]+)$' \
+    | cut -d&quot;/&quot; -f3 \
+    | sort -r
+)
+set -e
+for tag in ${tags[@]}
+do
+    echo $tag
+    pip --isolated install --quiet bokeh==$tag
+    python -c 'from bokeh.models.actions import Callback'
+done
+</code></pre>
+
+<h2>Write a simple bash completion simulating virtualenvwrapper for pyenv.</h2>
+<p>I'd like to be able to <code>workon project_name</code> which would take me to that
+project directory which would activate a previously configured pyenv for that
+project directory. I'll use the template discussed
+<a href="https://www.debian-administration.org/article/317/An_introduction_to_bash_completion_part_2">here</a>.</p>
+<pre><code class="shell">PROJ_DIR=~/workspace
+
+function workon() {
+    cd ~/workspace/${1}
+}
+
+function find_projects() {
+    find ${PROJ_DIR} -name .python-version \
+    | awk '{split($0,fragments,&quot;/&quot;); print fragments[5]}'
+}
+
+_workon() 
+{
+    local cur prev opts 
+    COMPREPLY=()
+    cur=&quot;${COMP_WORDS[COMP_CWORD]}&quot;
+    prev=&quot;${COMP_WORDS[COMP_CWORD-1]}&quot;
+    projects=$(find_projects)
+
+    COMPREPLY=( $(compgen -W &quot;${projects}&quot; -- ${cur}) )
+    return 0
+}
+complete -F _workon workon
+</code></pre>
+
+<h2>Update many mongo documents with a function</h2>
+<p>Isn't there a simpler way to do this?</p>
+<pre><code class="javascript">var all = db.resource.find({
+    slug: {$exists: false}}, 
+    {private_meta:1}
+).limit(50000).toArray();
+print(all.length);
+all.forEach(function(element, index, array){
+    fragments = element.private_meta.orig_url.split('/');
+    slug = fragments[fragments.length - 1];
+    print(element._id + ' ' + slug);
+    db.resource.findAndModify({
+        query: {_id:element._id},
+        update: {$set: {slug:slug, at: null}}
+    });
+});
+</code></pre>
+
+<h2>Automount USB storage on insertion</h2>
+<p><code>apt-get install usbmount</code></p>
+<h2>PyCharm keyboard hangs</h2>
+<p><code>killall -9 ibus-x11</code> and carry on, without restarting IDE</p>
+<p>I seem to remeber that this caused some stability problem in the OS. </p>
+<ol>
+<li><a href="http://stackoverflow.com/a/26694754/1472229">stack link</a></li>
+</ol>
+<h2>VIM foo</h2>
+<ul>
+<li><code>D</code> - delete to the end of line</li>
+<li><code>OD</code> - delete line but leave it empty, go to first char and <code>D</code></li>
+<li>in <code>INSERT</code> mode <code>Ctrl-N</code>, <code>Ctrl-P</code> complete words</li>
+</ul>
+<h2>Enabling Radeon HD 8730M on Linux for better gaming.</h2>
+<p>I installed a 3D game on Linux for the first time and the FPS sucked. 
+<a href="https://wiki.ubuntu.com/X/Config/HybridGraphics">This</a> tells me to get fglrx 
+and reboot... </p>
+<pre><code>$ lspci | grep VGA
+00:02.0 VGA compatible controller: Intel Corporation 3rd Gen Core processor Graphics Controller (rev 09)
+01:00.0 VGA compatible controller: Advanced Micro Devices, Inc. [AMD/ATI] Mars [Radeon HD 8730M] (rev ff)
+$ apt-get install fglrx fglrx-updates
+</code></pre>
+
+<p>Wow, it worked the first time. </p>
+<h2>Compile <code>Pyenv</code> Pythons with <code>UCS4</code></h2>
+<p>The python that comes with <code>pyenv</code> is <code>UCS2</code> type [1], <code>lxml</code> needs <code>UCS4</code>, 
+you need to recompile any python you'll use:</p>
+<p><code>PYTHON_CONFIGURE_OPTS="--enable-unicode=ucs4" pyenv install 2.7.4</code></p>
+<p>It's probably a good idea to recompile all wrong pythons straight away. First 
+check the "UCS Status" of installed Pytohns using this magic commandfu:</p>
+<pre><code class="shell">find ~/.pyenv/versions/ \
+    -maxdepth 3 \
+    -name python \
+    -print0 \
+    | xargs -0 \
+    -i bash -c &quot;echo {}; eval {} -c \'import sys\; print\(sys.maxunicode\)\'&quot; 
+</code></pre>
+
+<p><code>1114111</code> is the desired range. 64K is not. </p>
+<p>There is a good chance that the wheel cache contains packages compiled for the 
+previous, wrong, UCS2 Python so delete the cache:</p>
+<pre><code>rm -rf ~/.cache/pip/
+</code></pre>
+
+<h3>pyenv-virtualenv</h3>
+<p><a href="https://github.com/yyuu/pyenv-virtualenv">pyenv-virtualenv</a> is great. Note that you need to 
+explicitely turn it on for a given directory, so:</p>
+<pre><code>pyenv virtualenv 3.4.3 venv_name
+pyenv local venv_name
+</code></pre>
+
+<p>Now if there was a virtualenvwrapper <code>workon</code>-like command that'd switch to that 
+directory</p>
+<p>The second line was not so obvious to me and docs don't mention it. Or maybe I'm
+doing something wrong?</p>
+<ol>
+<li><a href="https://docs.python.org/2/c-api/unicode.html#c.Py_UNICODE">Python UCS</a></li>
+<li><a href="https://github.com/yyuu/pyenv/issues/86">How to pass Python build options to pyenv</a></li>
+</ol>
+<h2>How to disable <code>mate</code> workspace key shortcuts</h2>
+<pre><code class="shell">gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-left &quot;[]&quot;
+gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-right &quot;[]&quot;
+gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-up &quot;[]&quot;
+gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-down &quot;[]&quot;
+gsettings set org.mate.Marco.global-keybindings switch-to-workspace-down &quot;&quot;
+gsettings set org.mate.Marco.global-keybindings switch-to-workspace-up &quot;&quot;
+</code></pre>
+
+<h3>Reset gnome shell classic keybindings to minimum</h3>
+<pre><code class="shell"># set all keybindings to none
+for x in $(gsettings list-keys org.gnome.desktop.wm.keybindings); do gsettings set org.gnome.desktop.wm.keybindings $x []; done
+# set only the useful ones
+gsettings set org.gnome.desktop.wm.keybindings panel-run-dialog &quot;['&lt;Alt&gt;F2']&quot;
+gsettings set org.gnome.desktop.wm.keybindings activate-window-menu &quot;['&lt;Alt&gt;space']&quot;
+gsettings set org.gnome.desktop.wm.keybindings switch-applications &quot;['&lt;Alt&gt;Tab']&quot;
+gsettings set org.gnome.desktop.wm.keybindings close &quot;['&lt;Alt&gt;F4']&quot;
+# on titlebar, only close button
+gsettings set org.gnome.desktop.wm.preferences button-layout &quot;:close&quot;
+</code></pre>
+
+<p>You can also access all such bindings using <code>dconf-editor</code>. The path above
+can be found in the tree. Use find for similar values.</p>
+<h2>How to extend PyCharm's multicursor to lines below.</h2>
+<ul>
+<li>Double click ctrol + up/down arrows.</li>
+<li>[ctrl+shift]+alt+j - select [all] similar   </li>
+</ul>
+<h2>Bokeh observations</h2>
+<ul>
+<li>Bokeh gives you jQuery under <code>Bokeh.$</code>.</li>
+</ul>
+<hr>
+<!--<ul>
+    <a href="index.html">Index</a> -
+    <a href="snippets.html">Snippets</a> -
+    <a href="blog.html">Blog</a> -
+    <a href="links.html">Links</a> -
+    <a href="today.html">Today I read</a> -
+    <a href="aboutme.html">About me</a>
+</ul>
+-->
+bartekbrak1@gmail.com
+</body>
+</html>
