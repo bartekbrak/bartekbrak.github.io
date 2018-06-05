@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+body {max-width:800px; margin: auto}
+body {
+    padding-top: 15px;
+    line-height: 1.4;
+}
+pre {
+    background-color: whitesmoke;
+    padding: 10px;
+    white-space: pre-wrap;
+}
+blockquote {
+    border-left: 0.5em solid black;
+    padding-left: 1em;
+    margin-left: 1em;
+}
+p {
+    text-align:justify
+}
+</style>
+<link href="http://bartekbrak.github.io/images/favicon.ico" rel="icon">
+</head>
+<body>
+<p>--- template</p>
+<blockquote>
+<p>Question</p>
+</blockquote>
+<ul>
+<li>
+<p>hint if he does not describe this part, turn into helping question</p>
+<p>possible answer topics, don't expect right answers, manny ways to skin a cat</p>
+</li>
+</ul>
+<p>--- questions</p>
+<h2>devops</h2>
+<blockquote>
+<p>Propose a way to deploy a Python Django application.</p>
+</blockquote>
+<ul>
+<li>
+<p>how to store code?</p>
+<p>git, centralized server, github, gitlab</p>
+</li>
+<li>
+<p>how to move code?</p>
+<p>docker images, git clone, scp, ansible</p>
+</li>
+<li>
+<p>how to boostrap code (run scripts needed for app to run, like migrate)</p>
+<p>remote scripts, docker entry point, fabric, ansible playbooks</p>
+</li>
+<li>
+<p>how to run code?</p>
+<p>wsgi, supervisord,</p>
+</li>
+<li>
+<p>how to serve code</p>
+<p>nginx, apache,</p>
+</li>
+<li>
+<p>how to minimize/avoid downtime</p>
+<p>load balancer, nighttime deploys, just make deploy fast by skill, ready to quickly roll back
+have staging/CI/QA to avoid fuckups, code review</p>
+</li>
+<li>
+<p>how to configure production app, how to store secrets?</p>
+<p>separate configs, read env, limit access to production environments</p>
+</li>
+</ul>
+<h2>Python open-ended questions, don't talk for too long</h2>
+<blockquote>
+<p>what is challenging in development, and specifically Python?</p>
+</blockquote>
+<ul>
+<li>
+<p>testing</p>
+<p>there are many kinds of tests, there is no right one for you, you need experience in many to choose wisely</p>
+</li>
+<li>
+<p>plethora of solutions</p>
+<p>mature ecosystem usually offers too many things, flask or django, sqlalchemy or django orm</p>
+</li>
+<li>
+<p>balance between progressive / conservative choices</p>
+<p>should one use the new coolest and possibly win something or be risk avoiding and stay with known solutions with slightly older versions</p>
+</li>
+<li>
+<p>feature creep</p>
+<p>how to build useful (many features) but maintainable system (little features but stable)</p>
+</li>
+</ul>
+<blockquote>
+<p>How to build a smart team, what skills and decisions are needed?</p>
+</blockquote>
+<ul>
+<li>
+<p>different levels of competence, from junior to senior</p>
+</li>
+<li>
+<p>not focus on technology only, think values and atmosphere through</p>
+</li>
+<li>
+<p>trust and freedom</p>
+</li>
+</ul>
+<h2>Python specific questions</h2>
+<blockquote>
+<p>Describe feature history of Python from 2.6 to 3.6, don't be specific, don't touch all versions, touch on main points</p>
+</blockquote>
+<pre><code>2.6 base for comparison, c'mon nobody knows, but... with statement, user site-packages, multiprocessing
+2.7 dict comprehensions, argparse
+3.0 breaking changes, we don't care which but... print as function, unicode strings as base, super syntax, more generator and iterator defaults, many others
+3.1, 3.2, 3.3 maturing, many small unimportant changes
+3.4 asyncio, pathlib
+3.5 typing
+3.6 f-strings, faster dict implementation (matters for everything, as dicts are everywhere, eveyr object has some dicts),  asynchronous generators
+</code></pre>
+<p>value: shows interest in Python in general, proxy for breadth of technical stack, be lax, no-one knows this list, everyone has to know at lest one thing</p>
+<blockquote>
+<p>simple, why is <code>with open</code> important?</p>
+<p>why circular import happen, how to solve them</p>
+</blockquote>
+<pre><code>lay out code differently
+in-line imports when lazy
+</code></pre>
+<h2>Linux questions</h2>
+<ul>
+<li>name 3 major linux distributions</li>
+<li>name 2 ways of distributing software (apt/deb/debian/ubuntu, yum/rpm/redhat/centos, dnf/fedora, apk/alpine)</li>
+<li>try to name one linux tool for every letter of the alphabet (a - apt, b - bzip, c - cat, d - dd, e - echo), after 5 or so say "thanks, that's awesome, you know it, as this is a killer usually)</li>
+<li>
+<h2>what is the standard linux disk format? (ext4, or ext2, ext3, ext whetever is fine, shows he actually worked with linux for some time)</h2>
+</li>
+</ul>
+<h2>Django specific questions</h2>
+<p>you</p>
+<h2>DRF specific questions</h2>
+<p>you</p>
+<h2>text editor / IDE qustions</h2>
+<ul>
+<li>describe how you work with your favourite editor/IDE, what do you like about it, what does it lack?</li>
+</ul>
+<hr>
+<!--<ul>
+    <a href="index.html">Index</a> -
+    <a href="snippets.html">Snippets</a> -
+    <a href="blog.html">Blog</a> -
+    <a href="links.html">Links</a> -
+    <a href="today.html">Today I read</a> -
+    <a href="aboutme.html">About me</a>
+</ul>
+-->
+bartekbrak1@gmail.com
+</body>
+</html>
