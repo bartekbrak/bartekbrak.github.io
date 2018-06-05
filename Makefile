@@ -2,23 +2,13 @@
 
 help:
 	@echo compile
-	@echo push
-	@echo debug
-	@echo install 
+	@echo install
 	@echo watch
 
 compile:
-	python md_to_html.py md/*.md
-
-push:
-	$(MAKE) compile
-	-git add *.html md/*.md
-	-git commit *.html md/*.md -mup
-	-git reset $$(git commit-tree HEAD^{tree} -m "up")
-	-git push -f
-
-debug:
-	git commit-tree HEAD^{tree} -m "up"
+	find md -name \*.md | xargs md_to_html.py
+	git add *.html
+	find md -name \*.md | xargs git add
 
 install:
 	pip install markdown
