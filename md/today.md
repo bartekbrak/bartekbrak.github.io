@@ -77,7 +77,7 @@ in cache or on the disk.
 * The Big Oh notation ignores the difference between multiplicative constants.
 The functions `f(n) = 2n` and `g(n) = n` are identical in Big Oh analysis
 
-<img src="images/growth_rates.png" title=" Copyright: S.S. Skiena, The Algorithm Design Manual, 2nd ed., DOI: 10.1007/978-1-84800-070-4 2, c Springer-Verlag London Limited 2008" style="width:100%" />
+<img src="/images/growth_rates.png" title=" Copyright: S.S. Skiena, The Algorithm Design Manual, 2nd ed., DOI: 10.1007/978-1-84800-070-4 2, c Springer-Verlag London Limited 2008" style="width:100%" />
 
 Function names:
 

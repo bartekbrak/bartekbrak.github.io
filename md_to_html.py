@@ -1,10 +1,13 @@
-#!/usr/bin/env python3
+#!/usr/bin/env -S uv run --script
+# /// script
+# dependencies = ["markdown"]
+# ///
+
 from argparse import ArgumentParser
+from pathlib import Path
 
 import markdown
 from io import BytesIO
-
-template = open('template').read()
 
 
 def render(filename):
@@ -28,7 +31,11 @@ def render(filename):
             # 'markdown.extensions.toc': {'permalink': True},
         },
     )
-    with open(filename.replace('.md', '.html').split('/')[-1], 'w') as f:
+    output = Path(filename).with_suffix('.html').name
+    template = Path('template_index' if output == 'index.html' else 'template').read_text()
+    output = Path(output) if output == 'index.html' else Path('blog/archive') / output
+    output.parent.mkdir(parents=True, exist_ok=True)
+    with output.open('w') as f:
         f.write(template % dict(body=body.getvalue().decode("utf-8")))
 
 

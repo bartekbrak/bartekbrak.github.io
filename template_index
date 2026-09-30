@@ -8,6 +8,6 @@ body {max-width:800px; margin:auto; padding-top:15px; line-height:1.4}
 <link href="http://bartekbrak.github.io/images/favicon.ico" rel="icon">
 </head>
 <body>
-<p><a href="blog/archive/unlisted.html">.</a></p>
+%(body)s
 </body>
 </html>

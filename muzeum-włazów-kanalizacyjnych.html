@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="pl" data-style="editorial">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Fotograficzne muzeum włazów kanalizacyjnych. Małe detale miast, zebrane podczas spacerów.">
+  <title>Muzeum włazów kanalizacyjnych</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #f6f3eb;
+      --surface: #fcfaf5;
+      --ink: #292b26;
+      --muted: #65665d;
+      --line: #ccc9be;
+      --accent: #88452d;
+      --photo: #e8e5dc;
+      --heading: Georgia, 'Times New Roman', serif;
+      --body: system-ui, sans-serif;
+      --radius: 0;
+      --border: 1px;
+      --shadow: none;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font: 1rem/1.6 var(--body);
+    }
+    a { color: var(--accent); text-underline-offset: .2em; }
+    button { font: inherit; }
+    a:focus-visible, button:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 5px;
+    }
+    [hidden] { display: none !important; }
+    .skip-link {
+      position: absolute;
+      top: .5rem;
+      left: 1rem;
+      z-index: 1;
+      padding: .75rem;
+      background: var(--surface);
+      transform: translateY(-200%);
+    }
+    .skip-link:focus { transform: translateY(0); }
+    .page { max-width: 1800px; margin: auto; padding: 0 clamp(1rem, 3vw, 3rem); }
+    .masthead {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      padding: 1.5rem 0;
+      border-bottom: var(--border) solid var(--ink);
+    }
+    .brand { display: flex; align-items: center; gap: .75rem; }
+    .mark { width: 2.5rem; height: 2.5rem; flex: none; color: var(--accent); }
+    .eyebrow, .collection-heading, .number {
+      font: .75rem/1.5 var(--body);
+      font-weight: 650;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .masthead a { font-size: .875rem; }
+    .intro { padding: clamp(2rem, 5vw, 5rem) 0 2rem; }
+    .intro .eyebrow { color: var(--accent); margin: 0 0 1rem; }
+    h1 {
+      max-width: 18ch;
+      margin: 0;
+      font: 400 clamp(2.2rem, 5vw, 5.5rem)/1.08 var(--heading);
+      letter-spacing: -.04em;
+      overflow-wrap: anywhere;
+    }
+    .lead { max-width: 52ch; margin: 1.5rem 0 0; color: var(--muted); font-size: 1.1rem; }
+    .style-picker {
+      margin: 0 0 2.5rem;
+      padding: 1.25rem 0;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+    .style-picker h2 { margin: 0 0 .75rem; font: 600 .875rem/1.5 var(--body); }
+    .style-buttons { display: flex; flex-wrap: wrap; gap: .5rem; }
+    .style-buttons button {
+      min-height: 44px;
+      padding: .5rem 1rem;
+      border: var(--border) solid var(--line);
+      border-radius: var(--radius);
+      color: var(--ink);
+      background: var(--surface);
+      cursor: pointer;
+    }
+    .style-buttons button:hover { border-color: var(--accent); }
+    .style-buttons button[aria-pressed="true"] {
+      background: var(--ink);
+      color: var(--paper);
+      border-color: var(--ink);
+    }
+    .style-note { color: var(--muted); font-size: .875rem; margin: .75rem 0 0; }
+    .collection-bar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: .5rem 1.5rem;
+      margin-bottom: 1.25rem;
+    }
+    .collection-heading { margin: 0; }
+    .collection-bar p { margin: 0; color: var(--muted); font-size: .8rem; }
+    .gallery {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 2rem 1.25rem;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+    .gallery > li { min-width: 0; }
+    .card {
+      height: 100%;
+      margin: 0;
+      background: var(--surface);
+      border: var(--border) solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    .photo {
+      display: block;
+      background: var(--photo);
+      border-radius: var(--radius) var(--radius) 0 0;
+    }
+    .photo img {
+      display: block;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 4 / 3;
+      object-fit: contain;
+      border-radius: inherit;
+    }
+    .photo:hover { outline: 2px solid var(--accent); outline-offset: -2px; }
+    figcaption { padding: 1.1rem; overflow-wrap: anywhere; }
+    .number { display: block; color: var(--accent); margin-bottom: .5rem; }
+    h3 { margin: 0 0 1rem; font: 400 1.4rem/1.25 var(--heading); }
+    dl { margin: 0; font-size: .8rem; }
+    dl > div { display: grid; grid-template-columns: 4.25rem minmax(0, 1fr); gap: .5rem; }
+    dt { color: var(--muted); }
+    dd { margin: 0; }
+    .description {
+      border-top: 1px solid var(--line);
+      padding-top: .75rem;
+      margin: .9rem 0 0;
+      font-size: .875rem;
+      color: var(--muted);
+    }
+    footer {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 1rem;
+      border-top: var(--border) solid var(--ink);
+      margin-top: 3rem;
+      padding: 1.5rem 0 2rem;
+      font-size: .8rem;
+      color: var(--muted);
+      overflow-wrap: anywhere;
+    }
+    footer p { margin: 0; }
+    @media (min-width: 600px) { .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (min-width: 900px) { .gallery { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+    @media (min-width: 1200px) { .gallery { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+    @media (min-width: 1600px) { .gallery { grid-template-columns: repeat(5, minmax(0, 1fr)); } }
+
+    /* The same collection, five visual treatments. No external fonts or libraries. */
+    :root[data-style="swiss"] {
+      --paper: #fff;
+      --surface: #fff;
+      --ink: #151515;
+      --muted: #595959;
+      --accent: #b3261e;
+      --line: #bdbdbd;
+      --photo: #eeeeec;
+      --heading: Arial, Helvetica, sans-serif;
+      --body: Arial, Helvetica, sans-serif;
+    }
+    [data-style="swiss"] h1, [data-style="swiss"] h3 { font-weight: 750; }
+    [data-style="swiss"] .intro { border-left: .5rem solid var(--accent); padding-left: 1.5rem; margin: 2rem 0; }
+    [data-style="swiss"] .card { border-width: 0 0 2px; border-color: var(--ink); }
+    [data-style="swiss"] figcaption { padding-left: 0; padding-right: 0; }
+    :root[data-style="brutalist"] {
+      --paper: #f4ef64;
+      --surface: #fffdf2;
+      --ink: #191919;
+      --muted: #484638;
+      --accent: #7527b5;
+      --line: #191919;
+      --photo: #e7ddf1;
+      --heading: Arial, Helvetica, sans-serif;
+      --border: 2px;
+      --shadow: 5px 5px 0 #191919;
+    }
+    [data-style="brutalist"] h1, [data-style="brutalist"] h3 { font-weight: 900; }
+    [data-style="brutalist"] h1 { text-transform: uppercase; }
+    [data-style="brutalist"] .style-buttons button { box-shadow: 3px 3px 0 var(--ink); margin: 0 .25rem .25rem 0; }
+    [data-style="brutalist"] .number { font-weight: 900; }
+    :root[data-style="soft"] {
+      --paper: #edf2ec;
+      --surface: #fcfdf9;
+      --ink: #293c32;
+      --muted: #526658;
+      --accent: #356049;
+      --line: #c7d5c9;
+      --photo: #e0e8dd;
+      --heading: system-ui, sans-serif;
+      --radius: 1.25rem;
+      --shadow: 0 6px 20px #203a2810;
+    }
+    [data-style="soft"] h1 { font-weight: 550; letter-spacing: -.05em; }
+    [data-style="soft"] h3 { font-weight: 600; }
+    [data-style="soft"] .style-buttons button { border-radius: 3rem; }
+    [data-style="soft"] .intro { padding-bottom: 3rem; }
+    :root[data-style="terminal"] {
+      color-scheme: dark;
+      --paper: #101914;
+      --surface: #17231c;
+      --ink: #d4eddb;
+      --muted: #a0b7a7;
+      --accent: #9be6ab;
+      --line: #476450;
+      --photo: #0b110d;
+      --heading: ui-monospace, 'Courier New', monospace;
+      --body: ui-monospace, 'Courier New', monospace;
+    }
+    [data-style="terminal"] h1 { font-size: clamp(2rem, 4.5vw, 4.5rem); letter-spacing: -.06em; }
+    [data-style="terminal"] .eyebrow::before { content: '> '; }
+    [data-style="terminal"] .number::before { content: './'; }
+    [data-style="terminal"] .card { border-style: dashed; }
+    @media print {
+      :root { --paper: #fff; --surface: #fff; --ink: #000; --muted: #333; --accent: #000; --line: #aaa; --shadow: none; }
+      .style-picker, .skip-link, .masthead a { display: none; }
+      .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .card { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#kolekcja">Przejdź do zdjęć</a>
+  <div class="page">
+    <header>
+      <div class="masthead">
+        <div class="brand">
+          <svg class="mark" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <circle cx="24" cy="24" r="21"/><circle cx="24" cy="24" r="15"/>
+            <path d="M10 19h28M9 25h30M11 31h26M18 10v28M24 9v30M30 10v28"/>
+          </svg>
+          <span class="eyebrow">Archiwum pod stopami</span>
+        </div>
+        <a href="index.html">Strona główna ↗</a>
+      </div>
+      <div class="intro">
+        <p class="eyebrow">Kolekcja fotograficzna / 2019–2026</p>
+        <h1>Muzeum włazów kanalizacyjnych</h1>
+        <p class="lead">Małe detale, po których chodzimy. Wzory, napisy i ślady czasu — kolekcja znalezisk z miejskich spacerów.</p>
+      </div>
+    </header>
+
+    <main id="kolekcja">
+      <div class="collection-bar">
+        <h2 class="collection-heading">22 fotografie / od najnowszych</h2>
+        <p>Kliknij zdjęcie, by otworzyć je w pełnym rozmiarze.</p>
+      </div>
+      <!-- Edit captions here; these are ordinary HTML cards, not generated Markdown.
+           Dates and locations come from filenames. Sizes use decimal MB (1 MB = 1,000,000 bytes). -->
+      <ol class="gallery">
+        <li>
+          <figure class="card">
+            <a class="photo" href="obrazy/muzeum-włazów-kanalizacyjnych/20260929_01_warszawa.webp"><img src="obrazy/muzeum-włazów-kanalizacyjnych/20260929_01_warszawa.webp" width="1500" height="2000" alt="Okrągły właz z betonowym środkiem i rdzawą obręczą; na pierwszym planie rolki." decoding="async" fetchpriority="high"></a>
+            <figcaption>
+              <span class="number">Eksponat 022</span><h3>Beton i żeliwna obręcz</h3>
+              <dl><div><dt>Miejsce</dt><dd>Warszawa</dd></div><div><dt>Data</dt><dd><time datetime="2026-09-29">29.09.2026</time></dd></div><div><dt>Autor</dt><dd>Bartek Brak</dd></div><div><dt>Nazwa</dt><dd>20260929_01_warszawa.webp (0.5 MB)</dd></div></dl>
+              <p class="description">Jasny środek, rdzawa rama i prostokątne otwory wzdłuż krawędzi. Zdjęcie ze spaceru na rolkach.</p>
+            </figcaption>
+          </figure>
+        </li>
+        <li>
+          <figure class="card">
+            <a class="photo" href="obrazy/muzeum-włazów-kanalizacyjnych/20260919_02_warszawa.webp"><img src="obrazy/muzeum-włazów-kanalizacyjnych/20260919_02_warszawa.webp" width="2000" height="1500" alt="Mała okrągła pokrywa podzielona krzyżem, otoczona drobną kostką." loading="lazy" decoding="async"></a>
+            <figcaption>
+              <span class="number">Eksponat 021</span><h3>Krzyż pośród kostki</h3>
+              <dl><div><dt>Miejsce</dt><dd>Warszawa</dd></div><div><dt>Data</dt><dd><time datetime="2026-09-19">19.09.2026</time></dd></div><div><dt>Autor</dt><dd>Bartek Brak</dd></div><div><dt>Nazwa</dt><dd>20260919_02_warszawa.webp (1.2 MB)</dd></div></dl>
+              <p class="description">Cztery pola na niewielkiej pokrywie. Wokół niej regularna obwódka z kostki brukowej.</p>
+            </figcaption>
+          </figure>
+        </li>
+        <li>
+          <figure class="card">
+            <a class="photo" href="obrazy/muzeum-włazów-kanalizacyjnych/20260919_01_warszawa.webp"><img src="obrazy/muzeum-włazów-kanalizacyjnych/20260919_01_warszawa.webp" width="2000" height="1500" alt="Duża ciemna pokrywa ze wzorem promienistym i opadłymi liśćmi." loading="lazy" decoding="async"></a>
+            <figcaption>
+              <span class="number">Eksponat 020</span><h3>Promienie i liście</h3>
+              <dl><div><dt>Miejsce</dt><dd>Warszawa</dd></div><div><dt>Data</dt><dd><time datetime="2026-09-19">19.09.2026</time></dd></div><div><dt>Autor</dt><dd>Bartek Brak</dd></div><div><dt>Nazwa</dt><dd>20260919_01_warszawa.webp (1.4 MB)</dd></div></dl>
+              <p class="description">Szerokie żebra dzielą koło na segmenty. W zagłębieniach zbierają się pierwsze jesienne liście.</p>
+            </figcaption>
+          </figure>
+        </li>
+        <li>
+          <figure class="card">
+            <a class="photo" href="obrazy/muzeum-włazów-kanalizacyjnych/20260918_03_warszawa.webp"><img src="obrazy/muzeum-włazów-kanalizacyjnych/20260918_03_warszawa.webp" width="1500" height="2000" alt="Trzy niewielkie okrągłe pokrywy ustawione w rzędzie na brukowanym chodniku." loading="lazy" decoding="async"></a>
+            <figcaption>
+              <span class="number">Eksponat 019</span><h3>Trzy w jednym rzędzie</h3>
+              <dl><div><dt>Miejsce</dt><dd>Warszawa</dd></div><div><dt>Data</dt><dd><time datetime="2026-09-18">18.09.2026</time></dd></div><div><dt>Autor</dt><dd>Bartek Brak</dd></div><div><dt>Nazwa</dt><dd>20260918_03_warszawa.webp (1.4 MB)</dd></div></dl>
+              <p class="description">Mały uliczny tryptyk: trzy ciemne koła w szarej siatce kostki.</p>
+            </figcaption>
+          </figure>
+        </li>
+        <li>
+          <figure class="card">
+            <a class="photo" href="obrazy/muzeum-włazów-kanalizacyjnych/20260918_02_warszawa.webp"><img src="obrazy/muzeum-włazów-kanalizacyjnych/20260918_02_warszawa.webp" width="1500" height="2000" alt="Pokrywa z gęstym wzorem promienistym i pierścieniem z kamiennej kostki." loading="lazy" decoding="async"></a>
+            <figcaption>
+              <span class="number">Eksponat 018</span><h3>Chodnikowa rozeta</h3>
+              <dl><div><dt>Miejsce</dt><dd>Warszawa</dd></div><div><dt>Data</dt><dd><time datetime="2026-09-18">18.09.2026</time></dd></div><div><dt>Autor</dt><dd>Bartek Brak</dd></div><div><dt>Nazwa</dt><dd>20260918_02_warszawa.webp (1.4 MB)</dd></div></dl>
+              <p class="description">Wąskie promienie biegną od środka ku obrzeżu. Kamienny pierścień oddziela pokrywę od płyt chodnika.</p>
+            </figcaption>
+          </figure>
+        </li>
+        <li>
+          <figure class="card">
+            <a class="photo" href="obrazy/muzeum-włazów-kanalizacyjnych/20260918_01_warszawa.webp"><img src="obrazy/muzeum-włazów-kanalizacyjnych/20260918_01_warszawa.webp" width="1500" height="2000" alt="Rdzawa okrągła pokrywa na granicy jasnych i ciemnych płyt chodnikowych." loading="lazy" decoding="async"></a>
+            <figcaption>
+              <span class="number">Eksponat 017</span><h3>Koło na granicy kolorów</h3>
+              <dl><div><dt>Miejsce</dt><dd>Warszawa</dd></div><div><dt>Data</dt><dd><time datetime="2026-09-18">18.09.2026</time></dd></div><div><dt>Autor</dt><dd>Bartek Brak</dd></div><div><dt>Nazwa</dt><dd>20260918_01_warszawa.webp (1.1 MB)</dd></div></dl>
+              <p class="description">Rdzawy wzór koncentryczny na styku dwóch odcieni chodnika.</p>
+            </figcaption>
+          </figure>
+        </li>
+        <li>
+          <figure class="card">
+            <a class="photo" href="obrazy/muzeum-włazów-kanalizacyjnych/20260912_01_olbrachcice.webp"><img src="obrazy/muzeum-włazów-kanalizacyjnych/20260912_01_olbrachcice.webp" width="1500" height="2000" alt="Rdzawa okrągła pokrywa w ciemnym kamiennym pierścieniu, pośród jasnego bruku." loading="lazy" decoding="async"></a>
+            <figcaption>
+              <span class="number">Eksponat 016</span><h3>Kamienna oprawa</h3>
+              <dl><div><dt>Miejsce</dt><dd>Olbrachcice</dd></div><div><dt>Data</dt><dd><time datetime="2026-09-12">12.09.2026</time></dd></div><div><dt>Autor</dt><dd>Bartek Brak</dd></div><div><dt>Nazwa</dt><dd>20260912_01_olbrachcice.webp (1.2 MB)</dd></div></dl>
+              <p class="description">Drobna faktura metalu i szeroka obręcz z ciemnej kostki. Miejsce zapisane zgodnie z nazwą pliku.</p>
+            </figcaption>
+          </figure>
+        </li>
+        <li>
+          <figure class="card">
+            <a class="photo" href="obrazy/muzeum-włazów-kanalizacyjnych/20260905_01_skierniewice.webp"><img src="obrazy/muzeum-włazów-kanalizacyjnych/20260905_01_skierniewice.webp" width="1500" height="2000" alt="Okrągły właz z tarczą herbową pośrodku i napisem na zewnętrznym pierścieniu." loading="lazy" decoding="async"></a>
+            <figcaption>
+              <span class="number">Eksponat 015</span><h3>Herb w asfalcie</h3>
+              <dl><div><dt>Miejsce</dt><dd>Skierniewice</dd></div><div><dt>Data</dt><dd><time datetime="2026-09-05">05.09.2026</time></dd></div><div><dt>Autor</dt><dd>Bartek Brak</dd></div><div><dt>Nazwa</dt><dd>20260905_01_skierniewice.webp (1.5 MB)</dd></div></dl>
+              <p class="description">Tarcza w centrum, litery na obwodzie i kilka jasnych liści na ciemnej nawierzchni.</p>
+            </figcaption>
+          </figure>
+        </li>
+        <li>
+          <figure class="card">
+            <a class="photo" href="obrazy/muzeum-włazów-kanalizacyjnych/20260831_02_warszawa.webp"><img src="obrazy/muzeum-włazów-kanalizacyjnych/20260831_02_warszawa.webp" width="1500" height="2000" alt="Pokrywa z regularną kwadratową kratką i znakiem w centrum, otoczona czerwoną kostką." loading="lazy" decoding="async"></a>
+            <figcaption>
+              <span class="number">Eksponat 014</span><h3>Kratka i zielone spoiny</h3>
+              <dl><div><dt>Miejsce</dt><dd>Warszawa</dd></div><div><dt>Data</dt><dd><time datetime="2026-08-31">31.08.2026</time></dd></div><div><dt>Autor</dt><dd>Bartek Brak</dd></div><div><dt>Nazwa</dt><dd>20260831_02_warszawa.webp (1.3 MB)</dd></div></dl>
+              <p class="description">Regularna siatka kwadratów kontrastuje z zielenią wyrastającą między kostkami.</p>
+            </figcaption>
+          </figure>
+        </li>
+        <li>
+          <figure class="card">
+            <a class="photo" href="obrazy/muzeum-włazów-kanalizacyjnych/20260831_01_warszawa.webp"><img src="obrazy/muzeum-włazów-kanalizacyjnych/20260831_01_warszawa.webp" width="1500" height="2000" alt="Okrągła pokrywa wypełniona drobną kratką, osadzona w szarej kostce." loading="lazy" decoding="async"></a>
+            <figcaption>
+              <span class="number">Eksponat 013</span><h3>Geometria codzienności</h3>
+              <dl><div><dt>Miejsce</dt><dd>Warszawa</dd></div><div><dt>Data</dt><dd><time datetime="2026-08-31">31.08.2026</time></dd></div><div><dt>Autor</dt><dd>Bartek Brak</dd></div><div><dt>Nazwa</dt><dd>20260831_01_warszawa.webp (1.3 MB)</dd></div></dl>
+              <p class="description">Drobna kratka, trzy otwory i prosta okrągła rama wśród szarej nawierzchni.</p>
+            </figcaption>
+          </figure>
+        </li>
+        <li>
+          <figure class="card">
+            <a class="photo" href="obrazy/muzeum-włazów-kanalizacyjnych/20221008_01_skierniewice.webp"><img src="obrazy/muzeum-włazów-kanalizacyjnych/20221008_01_skierniewice.webp" width="2000" height="1128" alt="Pokrywa z herbem i koncentrycznymi pasami napisów na jasnej nawierzchni." loading="lazy" decoding="async"></a>
+            <figcaption>
+              <span class="number">Eksponat 012</span><h3>Miasto zapisane w metalu</h3>
+              <dl><div><dt>Miejsce</dt><dd>Skierniewice</dd></div><div><dt>Data</dt><dd><time datetime="2022-10-08">08.10.2022</time></dd></div><div><dt>Autor</dt><dd>Bartek Brak</dd></div><div><dt>Nazwa</dt><dd>20221008_01_skierniewice.webp (0.3 MB)</dd></div></dl>
+              <p class="description">Centralna tarcza i otaczające ją pierścienie liter. Ciemny metal na jasnym podłożu.</p>
+            </figcaption>
+          </figure>
+        </li>
+        <li>
+          <figure class="card">
+            <a class="photo" href="obrazy/muzeum-włazów-kanalizacyjnych/20210417_01_skierniewice.webp"><img src="obrazy/muzeum-włazów-kanalizacyjnych/20210417_01_skierniewice.webp" width="2000" height="1125" alt="Okrągła pokrywa z promienistym wzorem, częściowo otoczona trawą." loading="lazy" decoding="async"></a>
+            <figcaption>
+              <span class="number">Eksponat 011</span><h3>Rozeta w trawie</h3>
+              <dl><div><dt>Miejsce</dt><dd>Skierniewice</dd></div><div><dt>Data</dt><dd><time datetime="2021-04-17">17.04.2021</time></dd></div><div><dt>Autor</dt><dd>Bartek Brak</dd></div><div><dt>Nazwa</dt><dd>20210417_01_skierniewice.webp (1.0 MB)</dd></div></dl>
+              <p class="description">Długie promienie i geometryczna obwódka. Trawa powoli zaciera granicę między pokrywą a ziemią.</p>
+            </figcaption>
+          </figure>
+        </li>
+        <li>
+          <figure class="card">
+            <a class="photo" href="obrazy/muzeum-włazów-kanalizacyjnych/20200731_01_sandomierz.webp"><img src="obrazy/muzeum-włazów-kanalizacyjnych/20200731_01_sandomierz.webp" width="2000" height="1125" alt="Okrągły właz z przedstawieniem budowli w centrum i zawiasami po bokach." loading="lazy" decoding="async"></a>
+            <figcaption>
+              <span class="number">Eksponat 010</span><h3>Architektura pod stopami</h3>
+              <dl><div><dt>Miejsce</dt><dd>Sandomierz</dd></div><div><dt>Data</dt><dd><time datetime="2020-07-31">31.07.2020</time></dd></div><div><dt>Autor</dt><dd>Bartek Brak</dd></div><div><dt>Nazwa</dt><dd>20200731_01_sandomierz.webp (0.8 MB)</dd></div></dl>
+              <p class="description">Budowla wpisana w środek pokrywy, otoczona drobnym rytmicznym wzorem.</p>
+            </figcaption>
+          </figure>
+        </li>
+        <li>
+          <figure class="card">
+            <a class="photo" href="obrazy/muzeum-włazów-kanalizacyjnych/20200727_02_warszawa.webp"><img src="obrazy/muzeum-włazów-kanalizacyjnych/20200727_02_warszawa.webp" width="2000" height="1125" alt="Jasna okrągła pokrywa z szerokimi zakrzywionymi liniami i małym symbolem w środku." loading="lazy" decoding="async"></a>
+            <figcaption>
+              <span class="number">Eksponat 009</span><h3>Okrągły labirynt</h3>
+              <dl><div><dt>Miejsce</dt><dd>Warszawa</dd></div><div><dt>Data</dt><dd><time datetime="2020-07-27">27.07.2020</time></dd></div><div><dt>Autor</dt><dd>Bartek Brak</dd></div><div><dt>Nazwa</dt><dd>20200727_02_warszawa.webp (0.8 MB)</dd></div></dl>
+              <p class="description">Szerokie łuki tworzą symetryczny rysunek na jasnej powierzchni metalu.</p>
+            </figcaption>
+          </figure>
+        </li>
+        <li>
+          <figure class="card">
+            <a class="photo" href="obrazy/muzeum-włazów-kanalizacyjnych/20200727_01_warszawa.webp"><img src="obrazy/muzeum-włazów-kanalizacyjnych/20200727_01_warszawa.webp" width="2000" height="1125" alt="Okrągły właz z geometryczną rozetą i pasem ornamentów na brzegu." loading="lazy" decoding="async"></a>
+            <figcaption>
+              <span class="number">Eksponat 008</span><h3>Geometryczny ornament</h3>
+              <dl><div><dt>Miejsce</dt><dd>Warszawa</dd></div><div><dt>Data</dt><dd><time datetime="2020-07-27">27.07.2020</time></dd></div><div><dt>Autor</dt><dd>Bartek Brak</dd></div><div><dt>Nazwa</dt><dd>20200727_01_warszawa.webp (0.7 MB)</dd></div></dl>
+              <p class="description">Wielokątne pola układają się w rozetę, a zewnętrzny pas zamyka kompozycję.</p>
+            </figcaption>
+          </figure>
+        </li>
+        <li>
+          <figure class="card">
+            <a class="photo" href="obrazy/muzeum-włazów-kanalizacyjnych/20190830_03_caerphilly.webp"><img src="obrazy/muzeum-włazów-kanalizacyjnych/20190830_03_caerphilly.webp" width="2000" height="1125" alt="Okrągła pokrywa w trawie, podzielona na pola z różnymi reliefami." loading="lazy" decoding="async"></a>
+            <figcaption>
+              <span class="number">Eksponat 007</span><h3>Mozaika reliefów</h3>
+              <dl><div><dt>Miejsce</dt><dd>Caerphilly</dd></div><div><dt>Data</dt><dd><time datetime="2019-08-30">30.08.2019</time></dd></div><div><dt>Autor</dt><dd>Bartek Brak</dd></div><div><dt>Nazwa</dt><dd>20190830_03_caerphilly.webp (1.0 MB)</dd></div></dl>
+              <p class="description">Kilka osobnych pól, każde z innym motywem. Zielonkawa patyna na rdzawym tle.</p>
+            </figcaption>
+          </figure>
+        </li>
+        <li>
+          <figure class="card">
+            <a class="photo" href="obrazy/muzeum-włazów-kanalizacyjnych/20190830_02_caerphilly.webp"><img src="obrazy/muzeum-włazów-kanalizacyjnych/20190830_02_caerphilly.webp" width="2000" height="1125" alt="Pokrywa z jasnym, okrągłym ornamentem podzielonym na cztery części." loading="lazy" decoding="async"></a>
+            <figcaption>
+              <span class="number">Eksponat 006</span><h3>Cztery części ornamentu</h3>
+              <dl><div><dt>Miejsce</dt><dd>Caerphilly</dd></div><div><dt>Data</dt><dd><time datetime="2019-08-30">30.08.2019</time></dd></div><div><dt>Autor</dt><dd>Bartek Brak</dd></div><div><dt>Nazwa</dt><dd>20190830_02_caerphilly.webp (1.0 MB)</dd></div></dl>
+              <p class="description">Ozdobny centralny medalion kontrastuje z prostą, szeroką powierzchnią wokół.</p>
+            </figcaption>
+          </figure>
+        </li>
+        <li>
+          <figure class="card">
+            <a class="photo" href="obrazy/muzeum-włazów-kanalizacyjnych/20190830_01_caerphilly.webp"><img src="obrazy/muzeum-włazów-kanalizacyjnych/20190830_01_caerphilly.webp" width="2000" height="1125" alt="Okrągła pokrywa z podłużnym reliefem pośrodku i wypustkami na obwodzie." loading="lazy" decoding="async"></a>
+            <figcaption>
+              <span class="number">Eksponat 005</span><h3>Relief na zielonym tle</h3>
+              <dl><div><dt>Miejsce</dt><dd>Caerphilly</dd></div><div><dt>Data</dt><dd><time datetime="2019-08-30">30.08.2019</time></dd></div><div><dt>Autor</dt><dd>Bartek Brak</dd></div><div><dt>Nazwa</dt><dd>20190830_01_caerphilly.webp (1.1 MB)</dd></div></dl>
+              <p class="description">Podłużne pole dekoracyjne przecina środek koła osadzonego w trawie.</p>
+            </figcaption>
+          </figure>
+        </li>
+        <li>
+          <figure class="card">
+            <a class="photo" href="obrazy/muzeum-włazów-kanalizacyjnych/20190828_01_barry.webp"><img src="obrazy/muzeum-włazów-kanalizacyjnych/20190828_01_barry.webp" width="2000" height="1125" alt="Ciemna okrągła pokrywa z wypukłymi rombami, obok trawy i żwiru." loading="lazy" decoding="async"></a>
+            <figcaption>
+              <span class="number">Eksponat 004</span><h3>Rytm małych rombów</h3>
+              <dl><div><dt>Miejsce</dt><dd>Barry</dd></div><div><dt>Data</dt><dd><time datetime="2019-08-28">28.08.2019</time></dd></div><div><dt>Autor</dt><dd>Bartek Brak</dd></div><div><dt>Nazwa</dt><dd>20190828_01_barry.webp (1.0 MB)</dd></div></dl>
+              <p class="description">Rozsiane po powierzchni wypukłe romby. Krawędź pokrywy znika częściowo pod roślinnością.</p>
+            </figcaption>
+          </figure>
+        </li>
+        <li>
+          <figure class="card">
+            <a class="photo" href="obrazy/muzeum-włazów-kanalizacyjnych/20190825_01_exeter.webp"><img src="obrazy/muzeum-włazów-kanalizacyjnych/20190825_01_exeter.webp" width="2000" height="2000" alt="Pokrywa z napisem Stanton, nieregularnym wypukłym wzorem i cieniem fotografa." loading="lazy" decoding="async"></a>
+            <figcaption>
+              <span class="number">Eksponat 003</span><h3>Stanton w cieniu</h3>
+              <dl><div><dt>Miejsce</dt><dd>Exeter</dd></div><div><dt>Data</dt><dd><time datetime="2019-08-25">25.08.2019</time></dd></div><div><dt>Autor</dt><dd>Bartek Brak</dd></div><div><dt>Nazwa</dt><dd>20190825_01_exeter.webp (0.8 MB)</dd></div></dl>
+              <p class="description">Nieregularne wypukłe linie, duże litery i cień przecinający powierzchnię włazu.</p>
+            </figcaption>
+          </figure>
+        </li>
+        <li>
+          <figure class="card">
+            <a class="photo" href="obrazy/muzeum-włazów-kanalizacyjnych/20190823_01.webp"><img src="obrazy/muzeum-włazów-kanalizacyjnych/20190823_01.webp" width="2000" height="1500" alt="Kwadratowa pokrywa PAM INTER-AX 2, podzielona po przekątnej i pokryta zygzakami." loading="lazy" decoding="async"></a>
+            <figcaption>
+              <span class="number">Eksponat 002</span><h3>Kwadrat pełen zygzaków</h3>
+              <dl><div><dt>Miejsce</dt><dd>Nie ustalono</dd></div><div><dt>Data</dt><dd><time datetime="2019-08-23">23.08.2019</time></dd></div><div><dt>Autor</dt><dd>Bartek Brak</dd></div><div><dt>Nazwa</dt><dd>20190823_01.webp (1.0 MB)</dd></div></dl>
+              <p class="description">Dwie trójkątne części, jodełkowy wzór i oznaczenia PAM INTER-AX 2. W nazwie pliku nie zapisano lokalizacji.</p>
+            </figcaption>
+          </figure>
+        </li>
+        <li>
+          <figure class="card">
+            <a class="photo" href="obrazy/muzeum-włazów-kanalizacyjnych/20190818_01_bircza.webp"><img src="obrazy/muzeum-włazów-kanalizacyjnych/20190818_01_bircza.webp" width="2000" height="1500" alt="Rdzawa okrągła pokrywa z promienistymi rzędami małych prostokątów." loading="lazy" decoding="async"></a>
+            <figcaption>
+              <span class="number">Eksponat 001</span><h3>Pierścienie i prostokąty</h3>
+              <dl><div><dt>Miejsce</dt><dd>Bircza</dd></div><div><dt>Data</dt><dd><time datetime="2019-08-18">18.08.2019</time></dd></div><div><dt>Autor</dt><dd>Bartek Brak</dd></div><div><dt>Nazwa</dt><dd>20190818_01_bircza.webp (1.2 MB)</dd></div></dl>
+              <p class="description">Rzędy niewielkich prostokątów rozchodzą się od okrągłego środka ku masywnej obręczy.</p>
+            </figcaption>
+          </figure>
+        </li>
+      </ol>
+    </main>
+    <footer>
+      <p>Muzeum włazów kanalizacyjnych · Warto patrzeć pod nogi.</p>
+      <a href="mailto:bartek.rychlicki@gmail.com">bartek.rychlicki@gmail.com</a>
+    </footer>
+    <section class="style-picker" aria-labelledby="style-heading" hidden>
+      <h2 id="style-heading">Jedna kolekcja, pięć odsłon. Wybierz styl:</h2>
+      <div class="style-buttons" role="group" aria-labelledby="style-heading">
+        <button type="button" data-style-choice="editorial" aria-pressed="true">Redakcyjny</button>
+        <button type="button" data-style-choice="swiss" aria-pressed="false">Szwajcarski</button>
+        <button type="button" data-style-choice="brutalist" aria-pressed="false">Neobrutalizm</button>
+        <button type="button" data-style-choice="soft" aria-pressed="false">Miękki minimalizm</button>
+        <button type="button" data-style-choice="terminal" aria-pressed="false">Terminal</button>
+      </div>
+      <p class="style-note" aria-live="polite" id="style-note">Redakcyjny: papierowe tło, szeryfowe nagłówki i spokojny rytm.</p>
+    </section>
+  </div>
+  <script>
+    (() => {
+      const notes = {
+        editorial: 'Redakcyjny: papierowe tło, szeryfowe nagłówki i spokojny rytm.',
+        swiss: 'Szwajcarski: mocna typografia, precyzyjna siatka i czerwony akcent.',
+        brutalist: 'Neobrutalizm: jaskrawe tło, grube obramowania i twarde cienie.',
+        soft: 'Miękki minimalizm: szałwiowe kolory, zaokrąglenia i delikatne cienie.',
+        terminal: 'Terminal: ciemne tło, zielone akcenty i pismo o stałej szerokości.'
+      };
+      const buttons = [...document.querySelectorAll('[data-style-choice]')];
+      const storageKey = 'manhole-museum-style';
+      function setStyle(style) {
+        if (!Object.hasOwn(notes, style)) return;
+        document.documentElement.dataset.style = style;
+        buttons.forEach(button => {
+          button.setAttribute('aria-pressed', String(button.dataset.styleChoice === style));
+        });
+        document.getElementById('style-note').textContent = notes[style];
+      }
+      try { setStyle(localStorage.getItem(storageKey)); } catch { /* Storage is optional. */ }
+      buttons.forEach(button => button.addEventListener('click', () => {
+        const style = button.dataset.styleChoice;
+        setStyle(style);
+        try { localStorage.setItem(storageKey, style); } catch { /* Still works without storage. */ }
+      }));
+      document.querySelector('.style-picker').hidden = false;
+    })();
+  </script>
+</body>
+</html>

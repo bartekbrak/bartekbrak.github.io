@@ -73,7 +73,7 @@ On personal level:
 * Write code to be consumed by humans, not your ego. I say the first receiver of my work isn't the company or the end user but my colleague. A balance is needed though.
 
 On team level:
-* Gather people of varied skillset, a database ninja will need the toolsmith sometimes, the toolsmith will need the frontend guru 
+* Gather people of varied skillset, a database ninja will need the toolsmith sometimes, the toolsmith will need the frontend guru
 * Have a routine to talk about tools, processes, productivity, but don't get stuck in a methodology for no reason
 * Provide enough autonomy to make people actually care but add leadership when things go meh
 
@@ -87,7 +87,7 @@ Aristotle once said: code isn't hard, people is hard.
 * I try to be more than code: I study languages, can have a chat about what's going on in your country and take interest in hobbies. 
 
 Weaknesses:
-* I sometimes get too heated up when bad or half-solutions get accepted. Hard to give up. This creates conflicts. I'm working on it. 
+* I sometimes get too heated up when bad or half-solutions get accepted. Hard to give up. This creates conflicts. I'm working on it.
 * I haven't studied CS in college. I have some stuff to catch up on. The more I catch up, the farther the rabbit. 
 
 > Tell us about a project which failed and what you learned from it.

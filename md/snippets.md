@@ -270,7 +270,7 @@ Just be consistent. I don't understand the reasoning behind this. :/
 ## Sticky virtualenvs for virtualenvwrapper
 
 ```shell
-$ cat ~/.virtualenvs/postactivate 
+$ cat ~/.virtualenvs/postactivate
 #!/bin/bash
 echo -n "$(basename $VIRTUAL_ENV)" > ~/.virtualenvs/.last
 
@@ -655,4 +655,3 @@ can be found in the tree. Use find for similar values.
 ## Bokeh observations
 
 - Bokeh gives you jQuery under `Bokeh.$`.
-
