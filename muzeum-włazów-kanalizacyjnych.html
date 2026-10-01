@@ -1,10 +1,15 @@
 <!DOCTYPE html>
-<html lang="pl" data-style="brutalist">
+<html lang="pl" data-style="brutalist" class="access-locked">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Fotograficzne muzeum włazów kanalizacyjnych. Małe detale miast, zebrane podczas spacerów.">
   <title>Muzeum włazów kanalizacyjnych</title>
+  <script>
+    if (document.cookie.split('; ').includes('manhole-museum-access=granted')) {
+      document.documentElement.classList.remove('access-locked');
+    }
+  </script>
   <style>
     :root {
       color-scheme: light;
@@ -30,11 +35,51 @@
     }
     a { color: var(--accent); text-underline-offset: .2em; }
     button { font: inherit; }
-    a:focus-visible, button:focus-visible {
+    a:focus-visible, button:focus-visible, input:focus-visible {
       outline: 3px solid var(--accent);
       outline-offset: 5px;
     }
     [hidden] { display: none !important; }
+    .access-locked body { overflow: hidden; }
+    .access-locked .page, .access-locked .skip-link {
+      filter: blur(18px);
+      pointer-events: none;
+      user-select: none;
+    }
+    .access-gate {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      place-items: center;
+      padding: 1rem;
+      background: rgb(244 239 100 / 20%);
+    }
+    .access-locked .access-gate { display: grid; }
+    .access-form {
+      width: min(100%, 24rem);
+      padding: 2rem;
+      border: 2px solid var(--ink);
+      background: var(--surface);
+      box-shadow: 7px 7px 0 var(--ink);
+    }
+    .access-form label {
+      display: block;
+      margin-bottom: .75rem;
+      font-weight: 900;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .access-form input {
+      width: 100%;
+      min-height: 48px;
+      padding: .65rem .8rem;
+      border: 2px solid var(--ink);
+      border-radius: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font: 1rem var(--body);
+    }
     .skip-link {
       position: absolute;
       top: .5rem;
@@ -243,6 +288,12 @@
   </style>
 </head>
 <body>
+  <div class="access-gate" role="dialog" aria-modal="true" aria-labelledby="access-label">
+    <div class="access-form">
+      <label id="access-label" for="access-password">nazwisko?</label>
+      <input id="access-password" type="password" autocomplete="off" autofocus>
+    </div>
+  </div>
   <a class="skip-link" href="#kolekcja">Przejdź do zdjęć</a>
   <div class="page">
     <header>
@@ -265,7 +316,7 @@
 
     <main id="kolekcja">
       <div class="collection-bar">
-        <h2 class="collection-heading">22 fotografie / od najnowszych</h2>
+        <h2 class="collection-heading">30 fotografii / od najnowszych</h2>
         <p>Kliknij zdjęcie, by otworzyć je w pełnym rozmiarze.</p>
       </div>
       <!-- Edit captions here; these are ordinary HTML cards, not generated Markdown.
@@ -275,7 +326,7 @@
           <figure class="card">
             <a class="photo" href="obrazy/muzeum-włazów-kanalizacyjnych/20260929_01_warszawa.webp"><img src="obrazy/muzeum-włazów-kanalizacyjnych/20260929_01_warszawa.webp" width="1500" height="2000" alt="Okrągły właz z betonowym środkiem i rdzawą obręczą; na pierwszym planie rolki." decoding="async" fetchpriority="high"></a>
             <figcaption>
-              <span class="number">Eksponat 022</span><h3>Beton i żeliwna obręcz</h3>
+              <span class="number">Eksponat 030</span><h3>Beton i żeliwna obręcz</h3>
               <dl><div><dt>Miejsce</dt><dd>Warszawa</dd></div><div><dt>Data</dt><dd><time datetime="2026-09-29">2026.09.29</time></dd></div><div><dt>Autor</dt><dd>Bartek Brak</dd></div><div><dt>Nazwa</dt><dd>20260929_01_warszawa.webp (0.5 MB)</dd></div><div><dt>Rozdzielczość</dt><dd>1500 × 2000 px</dd></div></dl>
               <p class="description">Jasny środek, rdzawa rama i prostokątne otwory wzdłuż krawędzi. Zdjęcie ze spaceru na rolkach.</p>
             </figcaption>
@@ -283,9 +334,69 @@
         </li>
         <li>
           <figure class="card">
+            <a class="photo" href="obrazy/muzeum-włazów-kanalizacyjnych/o/20260919_08_salamanka.webp"><img src="obrazy/muzeum-włazów-kanalizacyjnych/o/20260919_08_salamanka.webp" width="1500" height="2000" alt="Okrągła pokrywa z herbem Salamanki i meandrowym wzorem na kamiennym chodniku." loading="lazy" decoding="async"></a>
+            <figcaption>
+              <span class="number">Eksponat 029</span><h3>Meandry Salamanki</h3>
+              <dl><div><dt>Miejsce</dt><dd>Salamanka</dd></div><div><dt>Data</dt><dd><time datetime="2026-09-19">2026.09.19</time></dd></div><div><dt>Autor</dt><dd>oh</dd></div><div><dt>Nazwa</dt><dd>20260919_08_salamanka.webp (0.9 MB)</dd></div><div><dt>Rozdzielczość</dt><dd>1500 × 2000 px</dd></div></dl>
+              <p class="description">Herb miasta otaczają trzy pierścienie kanciastego ornamentu, wyraźnego na tle jasnych płyt.</p>
+            </figcaption>
+          </figure>
+        </li>
+        <li>
+          <figure class="card">
+            <a class="photo" href="obrazy/muzeum-włazów-kanalizacyjnych/o/20260919_07_salamanka.webp"><img src="obrazy/muzeum-włazów-kanalizacyjnych/o/20260919_07_salamanka.webp" width="2000" height="1691" alt="Okrągła pokrywa strażacka z hełmem, toporkami i herbem Salamanki." loading="lazy" decoding="async"></a>
+            <figcaption>
+              <span class="number">Eksponat 028</span><h3>Strażackie insygnia</h3>
+              <dl><div><dt>Miejsce</dt><dd>Salamanka</dd></div><div><dt>Data</dt><dd><time datetime="2026-09-19">2026.09.19</time></dd></div><div><dt>Autor</dt><dd>oh</dd></div><div><dt>Nazwa</dt><dd>20260919_07_salamanka.webp (0.5 MB)</dd></div><div><dt>Rozdzielczość</dt><dd>2000 × 1691 px</dd></div></dl>
+              <p class="description">Hełm i skrzyżowane toporki dominują nad miejskim herbem na pokrywie strażackiej.</p>
+            </figcaption>
+          </figure>
+        </li>
+        <li>
+          <figure class="card">
+            <a class="photo" href="obrazy/muzeum-włazów-kanalizacyjnych/o/20260919_06_salamanka.webp"><img src="obrazy/muzeum-włazów-kanalizacyjnych/o/20260919_06_salamanka.webp" width="1910" height="2000" alt="Okrągły właz kanalizacyjny z herbem Salamanki, osadzony w kamiennej kostce." loading="lazy" decoding="async"></a>
+            <figcaption>
+              <span class="number">Eksponat 027</span><h3>Herb pośród bruku</h3>
+              <dl><div><dt>Miejsce</dt><dd>Salamanka</dd></div><div><dt>Data</dt><dd><time datetime="2026-09-19">2026.09.19</time></dd></div><div><dt>Autor</dt><dd>oh</dd></div><div><dt>Nazwa</dt><dd>20260919_06_salamanka.webp (0.7 MB)</dd></div><div><dt>Rozdzielczość</dt><dd>1910 × 2000 px</dd></div></dl>
+              <p class="description">Regularne rzędy drobnych wypustek otaczają miejski herb i napis Alcantarillado.</p>
+            </figcaption>
+          </figure>
+        </li>
+        <li>
+          <figure class="card">
+            <a class="photo" href="obrazy/muzeum-włazów-kanalizacyjnych/o/20260919_05_salamanka.webp"><img src="obrazy/muzeum-włazów-kanalizacyjnych/o/20260919_05_salamanka.webp" width="1917" height="1556" alt="Prostokątna pokrywa z herbem Salamanki, napisem Alumbrado i turkusowym śladem farby." loading="lazy" decoding="async"></a>
+            <figcaption>
+              <span class="number">Eksponat 026</span><h3>Turkusowy ślad</h3>
+              <dl><div><dt>Miejsce</dt><dd>Salamanka</dd></div><div><dt>Data</dt><dd><time datetime="2026-09-19">2026.09.19</time></dd></div><div><dt>Autor</dt><dd>oh</dd></div><div><dt>Nazwa</dt><dd>20260919_05_salamanka.webp (0.4 MB)</dd></div><div><dt>Rozdzielczość</dt><dd>1917 × 1556 px</dd></div></dl>
+              <p class="description">Miejski herb i drobna kratka zostały przełamane pojedynczym turkusowym oznaczeniem.</p>
+            </figcaption>
+          </figure>
+        </li>
+        <li>
+          <figure class="card">
+            <a class="photo" href="obrazy/muzeum-włazów-kanalizacyjnych/o/20260919_04_salamanka.webp"><img src="obrazy/muzeum-włazów-kanalizacyjnych/o/20260919_04_salamanka.webp" width="2000" height="1055" alt="Niebieska prostokątna pokrywa oświetleniowa z herbem Salamanki i datą 1980." loading="lazy" decoding="async"></a>
+            <figcaption>
+              <span class="number">Eksponat 025</span><h3>Niebieski herb z 1980</h3>
+              <dl><div><dt>Miejsce</dt><dd>Salamanka</dd></div><div><dt>Data</dt><dd><time datetime="2026-09-19">2026.09.19</time></dd></div><div><dt>Autor</dt><dd>oh</dd></div><div><dt>Nazwa</dt><dd>20260919_04_salamanka.webp (0.5 MB)</dd></div><div><dt>Rozdzielczość</dt><dd>2000 × 1055 px</dd></div></dl>
+              <p class="description">Błękitne tło podkreśla miejski herb, geometryczną kratę i odlaną datę 1980.</p>
+            </figcaption>
+          </figure>
+        </li>
+        <li>
+          <figure class="card">
+            <a class="photo" href="obrazy/muzeum-włazów-kanalizacyjnych/o/20260919_03_salamanka.webp"><img src="obrazy/muzeum-włazów-kanalizacyjnych/o/20260919_03_salamanka.webp" width="2000" height="1388" alt="Prostokątna pokrywa z herbem Salamanki i napisem Alumbrado na jasnych płytach." loading="lazy" decoding="async"></a>
+            <figcaption>
+              <span class="number">Eksponat 024</span><h3>Oświetlenie z herbem</h3>
+              <dl><div><dt>Miejsce</dt><dd>Salamanka</dd></div><div><dt>Data</dt><dd><time datetime="2026-09-19">2026.09.19</time></dd></div><div><dt>Autor</dt><dd>oh</dd></div><div><dt>Nazwa</dt><dd>20260919_03_salamanka.webp (0.4 MB)</dd></div><div><dt>Rozdzielczość</dt><dd>2000 × 1388 px</dd></div></dl>
+              <p class="description">Prostokątna pokrywa oświetleniowa łączy rombową kratę z ozdobnym herbem Salamanki.</p>
+            </figcaption>
+          </figure>
+        </li>
+        <li>
+          <figure class="card">
             <a class="photo" href="obrazy/muzeum-włazów-kanalizacyjnych/20260919_02_warszawa.webp"><img src="obrazy/muzeum-włazów-kanalizacyjnych/20260919_02_warszawa.webp" width="2000" height="1500" alt="Mała okrągła pokrywa podzielona krzyżem, otoczona drobną kostką." loading="lazy" decoding="async"></a>
             <figcaption>
-              <span class="number">Eksponat 021</span><h3>Krzyż pośród kostki</h3>
+              <span class="number">Eksponat 023</span><h3>Krzyż pośród kostki</h3>
               <dl><div><dt>Miejsce</dt><dd>Warszawa</dd></div><div><dt>Data</dt><dd><time datetime="2026-09-19">2026.09.19</time></dd></div><div><dt>Autor</dt><dd>Bartek Brak</dd></div><div><dt>Nazwa</dt><dd>20260919_02_warszawa.webp (1.2 MB)</dd></div><div><dt>Rozdzielczość</dt><dd>2000 × 1500 px</dd></div></dl>
               <p class="description">Cztery pola na niewielkiej pokrywie. Wokół niej regularna obwódka z kostki brukowej.</p>
             </figcaption>
@@ -295,7 +406,7 @@
           <figure class="card">
             <a class="photo" href="obrazy/muzeum-włazów-kanalizacyjnych/20260919_01_warszawa.webp"><img src="obrazy/muzeum-włazów-kanalizacyjnych/20260919_01_warszawa.webp" width="2000" height="1500" alt="Duża ciemna pokrywa ze wzorem promienistym i opadłymi liśćmi." loading="lazy" decoding="async"></a>
             <figcaption>
-              <span class="number">Eksponat 020</span><h3>Promienie i liście</h3>
+              <span class="number">Eksponat 022</span><h3>Promienie i liście</h3>
               <dl><div><dt>Miejsce</dt><dd>Warszawa</dd></div><div><dt>Data</dt><dd><time datetime="2026-09-19">2026.09.19</time></dd></div><div><dt>Autor</dt><dd>Bartek Brak</dd></div><div><dt>Nazwa</dt><dd>20260919_01_warszawa.webp (1.4 MB)</dd></div><div><dt>Rozdzielczość</dt><dd>2000 × 1500 px</dd></div></dl>
               <p class="description">Szerokie żebra dzielą koło na segmenty. W zagłębieniach zbierają się pierwsze jesienne liście.</p>
             </figcaption>
@@ -305,7 +416,7 @@
           <figure class="card">
             <a class="photo" href="obrazy/muzeum-włazów-kanalizacyjnych/20260918_03_warszawa.webp"><img src="obrazy/muzeum-włazów-kanalizacyjnych/20260918_03_warszawa.webp" width="1500" height="2000" alt="Trzy niewielkie okrągłe pokrywy ustawione w rzędzie na brukowanym chodniku." loading="lazy" decoding="async"></a>
             <figcaption>
-              <span class="number">Eksponat 019</span><h3>Trzy w jednym rzędzie</h3>
+              <span class="number">Eksponat 021</span><h3>Trzy w jednym rzędzie</h3>
               <dl><div><dt>Miejsce</dt><dd>Warszawa</dd></div><div><dt>Data</dt><dd><time datetime="2026-09-18">2026.09.18</time></dd></div><div><dt>Autor</dt><dd>Bartek Brak</dd></div><div><dt>Nazwa</dt><dd>20260918_03_warszawa.webp (1.4 MB)</dd></div><div><dt>Rozdzielczość</dt><dd>1500 × 2000 px</dd></div></dl>
               <p class="description">Mały uliczny tryptyk: trzy ciemne koła w szarej siatce kostki.</p>
             </figcaption>
@@ -315,7 +426,7 @@
           <figure class="card">
             <a class="photo" href="obrazy/muzeum-włazów-kanalizacyjnych/20260918_02_warszawa.webp"><img src="obrazy/muzeum-włazów-kanalizacyjnych/20260918_02_warszawa.webp" width="1500" height="2000" alt="Pokrywa z gęstym wzorem promienistym i pierścieniem z kamiennej kostki." loading="lazy" decoding="async"></a>
             <figcaption>
-              <span class="number">Eksponat 018</span><h3>Chodnikowa rozeta</h3>
+              <span class="number">Eksponat 020</span><h3>Chodnikowa rozeta</h3>
               <dl><div><dt>Miejsce</dt><dd>Warszawa</dd></div><div><dt>Data</dt><dd><time datetime="2026-09-18">2026.09.18</time></dd></div><div><dt>Autor</dt><dd>Bartek Brak</dd></div><div><dt>Nazwa</dt><dd>20260918_02_warszawa.webp (1.4 MB)</dd></div><div><dt>Rozdzielczość</dt><dd>1500 × 2000 px</dd></div></dl>
               <p class="description">Wąskie promienie biegną od środka ku obrzeżu. Kamienny pierścień oddziela pokrywę od płyt chodnika.</p>
             </figcaption>
@@ -325,7 +436,7 @@
           <figure class="card">
             <a class="photo" href="obrazy/muzeum-włazów-kanalizacyjnych/20260918_01_warszawa.webp"><img src="obrazy/muzeum-włazów-kanalizacyjnych/20260918_01_warszawa.webp" width="1500" height="2000" alt="Rdzawa okrągła pokrywa na granicy jasnych i ciemnych płyt chodnikowych." loading="lazy" decoding="async"></a>
             <figcaption>
-              <span class="number">Eksponat 017</span><h3>Koło na granicy kolorów</h3>
+              <span class="number">Eksponat 019</span><h3>Koło na granicy kolorów</h3>
               <dl><div><dt>Miejsce</dt><dd>Warszawa</dd></div><div><dt>Data</dt><dd><time datetime="2026-09-18">2026.09.18</time></dd></div><div><dt>Autor</dt><dd>Bartek Brak</dd></div><div><dt>Nazwa</dt><dd>20260918_01_warszawa.webp (1.1 MB)</dd></div><div><dt>Rozdzielczość</dt><dd>1500 × 2000 px</dd></div></dl>
               <p class="description">Rdzawy wzór koncentryczny na styku dwóch odcieni chodnika.</p>
             </figcaption>
@@ -335,7 +446,7 @@
           <figure class="card">
             <a class="photo" href="obrazy/muzeum-włazów-kanalizacyjnych/20260912_01_olbrachcice.webp"><img src="obrazy/muzeum-włazów-kanalizacyjnych/20260912_01_olbrachcice.webp" width="1500" height="2000" alt="Rdzawa okrągła pokrywa w ciemnym kamiennym pierścieniu, pośród jasnego bruku." loading="lazy" decoding="async"></a>
             <figcaption>
-              <span class="number">Eksponat 016</span><h3>Kamienna oprawa</h3>
+              <span class="number">Eksponat 018</span><h3>Kamienna oprawa</h3>
               <dl><div><dt>Miejsce</dt><dd>Olbrachcice</dd></div><div><dt>Data</dt><dd><time datetime="2026-09-12">2026.09.12</time></dd></div><div><dt>Autor</dt><dd>Bartek Brak</dd></div><div><dt>Nazwa</dt><dd>20260912_01_olbrachcice.webp (1.2 MB)</dd></div><div><dt>Rozdzielczość</dt><dd>1500 × 2000 px</dd></div></dl>
               <p class="description">Drobna faktura metalu i szeroka obręcz z ciemnej kostki. Miejsce zapisane zgodnie z nazwą pliku.</p>
             </figcaption>
@@ -345,7 +456,7 @@
           <figure class="card">
             <a class="photo" href="obrazy/muzeum-włazów-kanalizacyjnych/20260905_01_skierniewice.webp"><img src="obrazy/muzeum-włazów-kanalizacyjnych/20260905_01_skierniewice.webp" width="1500" height="2000" alt="Okrągły właz z tarczą herbową pośrodku i napisem na zewnętrznym pierścieniu." loading="lazy" decoding="async"></a>
             <figcaption>
-              <span class="number">Eksponat 015</span><h3>Herb w asfalcie</h3>
+              <span class="number">Eksponat 017</span><h3>Herb w asfalcie</h3>
               <dl><div><dt>Miejsce</dt><dd>Skierniewice</dd></div><div><dt>Data</dt><dd><time datetime="2026-09-05">2026.09.05</time></dd></div><div><dt>Autor</dt><dd>Bartek Brak</dd></div><div><dt>Nazwa</dt><dd>20260905_01_skierniewice.webp (1.5 MB)</dd></div><div><dt>Rozdzielczość</dt><dd>1500 × 2000 px</dd></div></dl>
               <p class="description">Tarcza w centrum, litery na obwodzie i kilka jasnych liści na ciemnej nawierzchni.</p>
             </figcaption>
@@ -353,9 +464,19 @@
         </li>
         <li>
           <figure class="card">
+            <a class="photo" href="obrazy/muzeum-włazów-kanalizacyjnych/o/20260904_01_madryt.webp"><img src="obrazy/muzeum-włazów-kanalizacyjnych/o/20260904_01_madryt.webp" width="1500" height="2000" alt="Prostokątna pokrywa z herbem Madrytu i ukośną kratą, nad stopami w sandałach." loading="lazy" decoding="async"></a>
+            <figcaption>
+              <span class="number">Eksponat 016</span><h3>Madrycka krata</h3>
+              <dl><div><dt>Miejsce</dt><dd>Madryt</dd></div><div><dt>Data</dt><dd><time datetime="2026-09-04">2026.09.04</time></dd></div><div><dt>Autor</dt><dd>oh</dd></div><div><dt>Nazwa</dt><dd>20260904_01_madryt.webp (0.7 MB)</dd></div><div><dt>Rozdzielczość</dt><dd>1500 × 2000 px</dd></div></dl>
+              <p class="description">Herb Madrytu przecina regularną ukośną kratę prostokątnej pokrywy na szarym chodniku.</p>
+            </figcaption>
+          </figure>
+        </li>
+        <li>
+          <figure class="card">
             <a class="photo" href="obrazy/muzeum-włazów-kanalizacyjnych/20260831_02_warszawa.webp"><img src="obrazy/muzeum-włazów-kanalizacyjnych/20260831_02_warszawa.webp" width="1500" height="2000" alt="Pokrywa z regularną kwadratową kratką i znakiem w centrum, otoczona czerwoną kostką." loading="lazy" decoding="async"></a>
             <figcaption>
-              <span class="number">Eksponat 014</span><h3>Kratka i zielone spoiny</h3>
+              <span class="number">Eksponat 015</span><h3>Kratka i zielone spoiny</h3>
               <dl><div><dt>Miejsce</dt><dd>Warszawa</dd></div><div><dt>Data</dt><dd><time datetime="2026-08-31">2026.08.31</time></dd></div><div><dt>Autor</dt><dd>Bartek Brak</dd></div><div><dt>Nazwa</dt><dd>20260831_02_warszawa.webp (1.3 MB)</dd></div><div><dt>Rozdzielczość</dt><dd>1500 × 2000 px</dd></div></dl>
               <p class="description">Regularna siatka kwadratów kontrastuje z zielenią wyrastającą między kostkami.</p>
             </figcaption>
@@ -365,9 +486,19 @@
           <figure class="card">
             <a class="photo" href="obrazy/muzeum-włazów-kanalizacyjnych/20260831_01_warszawa.webp"><img src="obrazy/muzeum-włazów-kanalizacyjnych/20260831_01_warszawa.webp" width="1500" height="2000" alt="Okrągła pokrywa wypełniona drobną kratką, osadzona w szarej kostce." loading="lazy" decoding="async"></a>
             <figcaption>
-              <span class="number">Eksponat 013</span><h3>Geometria codzienności</h3>
+              <span class="number">Eksponat 014</span><h3>Geometria codzienności</h3>
               <dl><div><dt>Miejsce</dt><dd>Warszawa</dd></div><div><dt>Data</dt><dd><time datetime="2026-08-31">2026.08.31</time></dd></div><div><dt>Autor</dt><dd>Bartek Brak</dd></div><div><dt>Nazwa</dt><dd>20260831_01_warszawa.webp (1.3 MB)</dd></div><div><dt>Rozdzielczość</dt><dd>1500 × 2000 px</dd></div></dl>
               <p class="description">Drobna kratka, trzy otwory i prosta okrągła rama wśród szarej nawierzchni.</p>
+            </figcaption>
+          </figure>
+        </li>
+        <li>
+          <figure class="card">
+            <a class="photo" href="obrazy/muzeum-włazów-kanalizacyjnych/o/20260829_01_bilbao.webp"><img src="obrazy/muzeum-włazów-kanalizacyjnych/o/20260829_01_bilbao.webp" width="2000" height="1500" alt="Okrągły właz kanalizacyjny Bilbao z herbem i wzorem przypominającym koła zębate." loading="lazy" decoding="async"></a>
+            <figcaption>
+              <span class="number">Eksponat 013</span><h3>Koła zębate Bilbao</h3>
+              <dl><div><dt>Miejsce</dt><dd>Bilbao</dd></div><div><dt>Data</dt><dd><time datetime="2026-08-29">2026.08.29</time></dd></div><div><dt>Autor</dt><dd>oh</dd></div><div><dt>Nazwa</dt><dd>20260829_01_bilbao.webp (0.7 MB)</dd></div><div><dt>Rozdzielczość</dt><dd>2000 × 1500 px</dd></div></dl>
+              <p class="description">Herb Bilbao otacza rozbudowany układ drobnych form przypominających zazębiające się mechanizmy.</p>
             </figcaption>
           </figure>
         </li>
@@ -510,6 +641,15 @@
     </section>
   </div>
   <script>
+    (() => {
+      const input = document.getElementById('access-password');
+      input.addEventListener('input', () => {
+        if (input.value !== 'brak') return;
+        document.cookie = 'manhole-museum-access=granted; Max-Age=315360000; Path=/; SameSite=Lax';
+        document.documentElement.classList.remove('access-locked');
+      });
+    })();
+
     (() => {
       const notes = {
         editorial: 'Redakcyjny: papierowe tło, szeryfowe nagłówki i spokojny rytm.',
