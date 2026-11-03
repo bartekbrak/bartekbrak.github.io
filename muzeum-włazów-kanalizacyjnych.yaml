@@ -1,273 +1,659 @@
 # Dane eksponatów. Kolejność w pliku nie ma znaczenia; generator sortuje je od najnowszych.
 - file: 20260929_01_warszawa.webp
-  title: Beton i żeliwna obręcz
+  number: '031'
+  title: ''
   location: Warszawa
   date: '2026-09-29'
   author: Bartek Brak
   width: 1500
   height: 2000
-  alt: Okrągły właz z betonowym środkiem i rdzawą obręczą; na pierwszym planie rolki.
 - file: o/20260919_08_salamanka.webp
-  title: Meandry Salamanki
+  number: '029'
+  title: ''
   location: Salamanka
   date: '2026-09-19'
   author: oh
   width: 1500
   height: 2000
-  alt: Okrągła pokrywa z herbem Salamanki i meandrowym wzorem na kamiennym chodniku.
 - file: o/20260919_07_salamanka.webp
-  title: Strażackie insygnia
+  number: '028'
+  title: ''
   location: Salamanka
   date: '2026-09-19'
   author: oh
   width: 2000
   height: 1691
-  alt: Okrągła pokrywa strażacka z hełmem, toporkami i herbem Salamanki.
 - file: o/20260919_06_salamanka.webp
-  title: Herb pośród bruku
+  number: '027'
+  title: ''
   location: Salamanka
   date: '2026-09-19'
   author: oh
   width: 1910
   height: 2000
-  alt: Okrągły właz kanalizacyjny z herbem Salamanki, osadzony w kamiennej kostce.
 - file: o/20260919_05_salamanka.webp
-  title: Turkusowy ślad
+  number: '026'
+  title: ''
   location: Salamanka
   date: '2026-09-19'
   author: oh
   width: 1917
   height: 1556
-  alt: Prostokątna pokrywa z herbem Salamanki, napisem Alumbrado i turkusowym śladem farby.
 - file: o/20260919_04_salamanka.webp
-  title: Niebieski herb z 1980
+  number: '025'
+  title: ''
   location: Salamanka
   date: '2026-09-19'
   author: oh
   width: 2000
   height: 1055
-  alt: Niebieska prostokątna pokrywa oświetleniowa z herbem Salamanki i datą 1980.
 - file: o/20260919_03_salamanka.webp
-  title: Oświetlenie z herbem
+  number: '024'
+  title: ''
   location: Salamanka
   date: '2026-09-19'
   author: oh
   width: 2000
   height: 1388
-  alt: Prostokątna pokrywa z herbem Salamanki i napisem Alumbrado na jasnych płytach.
 - file: 20260919_02_warszawa.webp
-  title: Krzyż pośród kostki
+  number: '023'
+  title: ''
   location: Warszawa
   date: '2026-09-19'
   author: Bartek Brak
   width: 2000
   height: 1500
-  alt: Mała okrągła pokrywa podzielona krzyżem, otoczona drobną kostką.
 - file: 20260919_01_warszawa.webp
-  title: Promienie i liście
+  number: '022'
+  title: ''
   location: Warszawa
   date: '2026-09-19'
   author: Bartek Brak
   width: 2000
   height: 1500
-  alt: Duża ciemna pokrywa ze wzorem promienistym i opadłymi liśćmi.
 - file: 20260918_03_warszawa.webp
-  title: Trzy w jednym rzędzie
+  number: '021'
+  title: ''
   location: Warszawa
   date: '2026-09-18'
   author: Bartek Brak
-  width: 1500
-  height: 2000
-  alt: Trzy niewielkie okrągłe pokrywy ustawione w rzędzie na brukowanym chodniku.
+  width: 2000
+  height: 1500
 - file: 20260918_02_warszawa.webp
-  title: Chodnikowa rozeta
+  number: '020'
+  title: ''
   location: Warszawa
   date: '2026-09-18'
   author: Bartek Brak
-  width: 1500
-  height: 2000
-  alt: Pokrywa z gęstym wzorem promienistym i pierścieniem z kamiennej kostki.
+  width: 2000
+  height: 1500
 - file: 20260918_01_warszawa.webp
-  title: Koło na granicy kolorów
+  number: '019'
+  title: ''
   location: Warszawa
   date: '2026-09-18'
   author: Bartek Brak
-  width: 1500
-  height: 2000
-  alt: Rdzawa okrągła pokrywa na granicy jasnych i ciemnych płyt chodnikowych.
+  width: 2000
+  height: 1500
 - file: 20260912_01_olbrachcice.webp
-  title: Kamienna oprawa
+  number: '018'
+  title: ''
   location: Olbrachcice
   date: '2026-09-12'
   author: Bartek Brak
   width: 1500
   height: 2000
-  alt: Rdzawa okrągła pokrywa w ciemnym kamiennym pierścieniu, pośród jasnego bruku.
 - file: 20260905_01_skierniewice.webp
-  title: Herb w asfalcie
+  number: '017'
+  title: ''
   location: Skierniewice
   date: '2026-09-05'
   author: Bartek Brak
   width: 1500
   height: 2000
-  alt: Okrągły właz z tarczą herbową pośrodku i napisem na zewnętrznym pierścieniu.
 - file: o/20260904_01_madryt.webp
-  title: Madrycka krata
+  number: '016'
+  title: ''
   location: Madryt
   date: '2026-09-04'
   author: oh
   width: 1500
   height: 2000
-  alt: Prostokątna pokrywa z herbem Madrytu i ukośną kratą, nad stopami w sandałach.
 - file: 20260831_02_warszawa.webp
-  title: Kratka i zielone spoiny
+  number: '015'
+  title: ''
   location: Warszawa
   date: '2026-08-31'
   author: Bartek Brak
   width: 1500
   height: 2000
-  alt: Pokrywa z regularną kwadratową kratką i znakiem w centrum, otoczona czerwoną kostką.
 - file: 20260831_01_warszawa.webp
-  title: Geometria codzienności
+  number: '014'
+  title: ''
   location: Warszawa
   date: '2026-08-31'
   author: Bartek Brak
   width: 1500
   height: 2000
-  alt: Okrągła pokrywa wypełniona drobną kratką, osadzona w szarej kostce.
 - file: o/20260829_01_bilbao.webp
-  title: Koła zębate Bilbao
+  number: '013'
+  title: ''
   location: Bilbao
   date: '2026-08-29'
   author: oh
   width: 2000
   height: 1500
-  alt: Okrągły właz kanalizacyjny Bilbao z herbem i wzorem przypominającym koła zębate.
 - file: 20221008_01_skierniewice.webp
-  title: Miasto zapisane w metalu
+  number: '012'
+  title: ''
   location: Skierniewice
   date: '2022-10-08'
   author: Bartek Brak
   width: 2000
   height: 1128
-  alt: Pokrywa z herbem i koncentrycznymi pasami napisów na jasnej nawierzchni.
 - file: 20210417_01_skierniewice.webp
-  title: Rozeta w trawie
+  number: '011'
+  title: ''
   location: Skierniewice
   date: '2021-04-17'
   author: Bartek Brak
   width: 2000
   height: 1125
-  alt: Okrągła pokrywa z promienistym wzorem, częściowo otoczona trawą.
 - file: 20200731_01_sandomierz.webp
-  title: Architektura pod stopami
+  number: '010'
+  title: ''
   location: Sandomierz
   date: '2020-07-31'
   author: Bartek Brak
   width: 2000
   height: 1125
-  alt: Okrągły właz z przedstawieniem budowli w centrum i zawiasami po bokach.
 - file: 20200727_02_warszawa.webp
-  title: Okrągły labirynt
+  number: '009'
+  title: ''
   location: Warszawa
   date: '2020-07-27'
   author: Bartek Brak
   width: 2000
   height: 1125
-  alt: Jasna okrągła pokrywa z szerokimi zakrzywionymi liniami i małym symbolem w środku.
 - file: 20200727_01_warszawa.webp
-  title: Geometryczny ornament
+  number: '008'
+  title: ''
   location: Warszawa
   date: '2020-07-27'
   author: Bartek Brak
   width: 2000
   height: 1125
-  alt: Okrągły właz z geometryczną rozetą i pasem ornamentów na brzegu.
 - file: 20190830_03_caerphilly.webp
-  title: Mozaika reliefów
+  number: '007'
+  title: ''
   location: Caerphilly
   date: '2019-08-30'
   author: Bartek Brak
   width: 2000
   height: 1125
-  alt: Okrągła pokrywa w trawie, podzielona na pola z różnymi reliefami.
 - file: 20190830_02_caerphilly.webp
-  title: Cztery części ornamentu
+  number: '006'
+  title: ''
   location: Caerphilly
   date: '2019-08-30'
   author: Bartek Brak
   width: 2000
   height: 1125
-  alt: Pokrywa z jasnym, okrągłym ornamentem podzielonym na cztery części.
 - file: 20190830_01_caerphilly.webp
-  title: Relief na zielonym tle
+  number: '005'
+  title: ''
   location: Caerphilly
   date: '2019-08-30'
   author: Bartek Brak
   width: 2000
   height: 1125
-  alt: Okrągła pokrywa z podłużnym reliefem pośrodku i wypustkami na obwodzie.
 - file: 20190828_01_barry.webp
-  title: Rytm małych rombów
+  number: '004'
+  title: ''
   location: Barry
   date: '2019-08-28'
   author: Bartek Brak
   width: 2000
   height: 1125
-  alt: Ciemna okrągła pokrywa z wypukłymi rombami, obok trawy i żwiru.
 - file: 20190825_01_exeter.webp
-  title: Stanton w cieniu
+  number: '003'
+  title: ''
   location: Exeter
   date: '2019-08-25'
   author: Bartek Brak
   width: 2000
   height: 2000
-  alt: Pokrywa z napisem Stanton, nieregularnym wypukłym wzorem i cieniem fotografa.
 - file: 20190823_01.webp
-  title: Kwadrat pełen zygzaków
+  number: '002'
+  title: ''
   location: Nie ustalono
   date: '2019-08-23'
   author: Bartek Brak
   width: 2000
   height: 1500
-  alt: Kwadratowa pokrywa PAM INTER-AX 2, podzielona po przekątnej i pokryta zygzakami.
 - file: 20190818_01_bircza.webp
-  title: Pierścienie i prostokąty
+  number: '001'
+  title: ''
   location: Bircza
   date: '2019-08-18'
   author: Bartek Brak
   width: 2000
   height: 1500
-  alt: Rdzawa okrągła pokrywa z promienistymi rzędami małych prostokątów.
 - file: 20261025_01_krakow.webp
-  title: Wodociągi Miasta Krakowa
+  number: '034'
+  title: ''
   location: Kraków
   date: '2026-10-25'
   author: Surri
   width: 1500
   height: 2000
-  alt: Okrągły właz z herbem Krakowa i napisem Wodociągi Miasta Krakowa, osadzony w kamiennej kostce.
 - file: 20261018_01_tisnov.webp
-  title: Herb na żeliwnej pokrywie
+  number: '033'
+  title: ''
   location: Tišnov
   date: '2026-10-18'
   author: Karolina
   width: 1500
   height: 2000
-  alt: Ciemna okrągła pokrywa z herbem pośrodku, otoczona kamienną kostką.
 - file: 20260930_01.webp
-  title: Kwadratowa siatka
+  number: '032'
+  title: ''
   location: Nie ustalono
   date: '2026-09-30'
   author: Surri
   width: 1500
   height: 2000
-  alt: Duża żeliwna pokrywa z regularną kratką, osadzona w kamiennym pierścieniu.
 - file: 20260926_01.webp
-  title: Właz burzowy
+  number: '030'
+  title: ''
   location: Nie ustalono
   date: '2026-09-26'
   author: Taffit
   width: 1500
   height: 2000
-  alt: Okrągły właz z napisem BURZOWY i kwadratowym wzorem na jasnym chodniku.
+- file: 20261002_01_warszawa.webp
+  number: '035'
+  title: ''
+  location: Warszawa
+  date: '2026-10-02'
+  author: Bartek Brak
+  width: 1500
+  height: 2000
+
+- file: 20261002_02_skierniewice.webp
+  number: '036'
+  title: 'Największy właz Skierniewiców'
+  location: Skierniewice
+  date: '2026-10-02'
+  author: Bartek Brak
+  width: 2000
+  height: 1500
+
+- file: 20261003_01_milanowek.webp
+  number: '037'
+  title: ''
+  location: Milanówek
+  date: '2026-10-03'
+  author: Bartek Brak
+  width: 1500
+  height: 2000
+
+- file: 20261004_01_grodzisk_mazowiecki.webp
+  number: '038'
+  title: ''
+  location: Grodzisk Mazowiecki
+  date: '2026-10-04'
+  author: Bartek Brak
+  width: 1500
+  height: 2000
+
+- file: 20261004_02_grodzisk_mazowiecki.webp
+  number: '039'
+  title: ''
+  location: Grodzisk Mazowiecki
+  date: '2026-10-04'
+  author: Bartek Brak
+  width: 1500
+  height: 2000
+
+- file: 20261004_03_grodzisk_mazowiecki.webp
+  number: '040'
+  title: ''
+  location: Grodzisk Mazowiecki
+  date: '2026-10-04'
+  author: Bartek Brak
+  width: 1500
+  height: 2000
+
+- file: 20261004_04.webp
+  number: '041'
+  title: ''
+  location: Guadalajara
+  date: '2026-10-04'
+  author: oh
+  width: 2000
+  height: 1500
+
+- file: 20261004_05.webp
+  number: '042'
+  title: ''
+  location: Guadalajara
+  date: '2026-10-04'
+  author: oh
+  width: 2000
+  height: 1500
+
+- file: 20261004_06.webp
+  number: '043'
+  title: ''
+  location: Guadalajara
+  date: '2026-10-04'
+  author: oh
+  width: 2000
+  height: 1500
+
+- file: 20261004_07.webp
+  number: '044'
+  title: ''
+  location: Madryt
+  date: '2026-10-04'
+  author: oh
+  width: 1600
+  height: 1200
+
+- file: 20261006_01_barcelona.webp
+  number: '045'
+  title: ''
+  location: Barcelona
+  date: '2026-10-06'
+  author: Bartek Brak
+  width: 1500
+  height: 2000
+
+- file: 20261006_02_barcelona.webp
+  number: '046'
+  title: ''
+  location: Barcelona
+  date: '2026-10-06'
+  author: Bartek Brak
+  width: 1500
+  height: 2000
+
+- file: 20261006_03_barcelona.webp
+  number: '047'
+  title: ''
+  location: Barcelona
+  date: '2026-10-06'
+  author: Bartek Brak
+  width: 2000
+  height: 1500
+
+- file: 20261006_04_barcelona.webp
+  number: '048'
+  title: ''
+  location: Barcelona
+  date: '2026-10-06'
+  author: Bartek Brak
+  width: 1500
+  height: 2000
+
+- file: 20261006_05_barcelona.webp
+  number: '049'
+  title: ''
+  location: Barcelona
+  date: '2026-10-06'
+  author: Bartek Brak
+  width: 2000
+  height: 1500
+
+- file: 20261006_06_barcelona.webp
+  number: '050'
+  title: ''
+  location: Barcelona
+  date: '2026-10-06'
+  author: Bartek Brak
+  width: 1500
+  height: 2000
+
+- file: 20261006_07_barcelona.webp
+  number: '051'
+  title: ''
+  location: Barcelona
+  date: '2026-10-06'
+  author: Bartek Brak
+  width: 1500
+  height: 2000
+
+- file: 20261007_01_barcelona.webp
+  number: '052'
+  title: ''
+  location: Barcelona
+  date: '2026-10-07'
+  author: Bartek Brak
+  width: 1500
+  height: 2000
+
+- file: 20261007_02_barcelona.webp
+  number: '053'
+  title: ''
+  location: Barcelona
+  date: '2026-10-07'
+  author: Bartek Brak
+  width: 1500
+  height: 2000
+
+- file: 20261007_03_barcelona.webp
+  number: '054'
+  title: ''
+  location: Barcelona
+  date: '2026-10-07'
+  author: Bartek Brak
+  width: 2000
+  height: 1500
+
+- file: 20261008_01_saragossa.webp
+  number: '055'
+  title: ''
+  location: Saragossa
+  date: '2026-10-08'
+  author: Bartek Brak
+  width: 1500
+  height: 2000
+
+- file: 20261008_02_saragossa.webp
+  number: '056'
+  title: ''
+  location: Saragossa
+  date: '2026-10-08'
+  author: Bartek Brak
+  width: 1500
+  height: 2000
+
+- file: 20261008_03_saragossa.webp
+  number: '057'
+  title: ''
+  location: Saragossa
+  date: '2026-10-08'
+  author: Bartek Brak
+  width: 2000
+  height: 1500
+
+- file: 20261008_04_saragossa.webp
+  number: '058'
+  title: ''
+  location: Saragossa
+  date: '2026-10-08'
+  author: Bartek Brak
+  width: 2000
+  height: 1500
+
+- file: 20261008_05_saragossa.webp
+  number: '059'
+  title: ''
+  location: Saragossa
+  date: '2026-10-08'
+  author: Bartek Brak
+  width: 1500
+  height: 2000
+
+- file: 20261008_06_saragossa.webp
+  number: '060'
+  title: ''
+  location: Saragossa
+  date: '2026-10-08'
+  author: Bartek Brak
+  width: 2000
+  height: 1867
+
+- file: 20261008_07_saragossa.webp
+  number: '061'
+  title: ''
+  location: Saragossa
+  date: '2026-10-08'
+  author: Bartek Brak
+  width: 1067
+  height: 2000
+
+- file: 20261008_08_saragossa.webp
+  number: '062'
+  title: ''
+  location: Saragossa
+  date: '2026-10-08'
+  author: Bartek Brak
+  width: 687
+  height: 2000
+
+- file: 20261008_09_saragossa.webp
+  number: '063'
+  title: ''
+  location: Saragossa
+  date: '2026-10-08'
+  author: Bartek Brak
+  width: 2000
+  height: 1500
+
+- file: 20261008_10_saragossa.webp
+  number: '064'
+  title: ''
+  location: Saragossa
+  date: '2026-10-08'
+  author: Bartek Brak
+  width: 2000
+  height: 1500
+
+- file: 20261008_11_saragossa.webp
+  number: '065'
+  title: ''
+  location: Saragossa
+  date: '2026-10-08'
+  author: Bartek Brak
+  width: 2000
+  height: 1500
+
+- file: 20261009_01_madryt.webp
+  number: '066'
+  title: ''
+  location: Madryt
+  date: '2026-10-09'
+  author: Bartek Brak
+  width: 1500
+  height: 2000
+
+- file: 20261009_02_madryt.webp
+  number: '067'
+  title: ''
+  location: Madryt
+  date: '2026-10-09'
+  author: Bartek Brak
+  width: 1500
+  height: 2000
+
+- file: 20261009_03_madryt.webp
+  number: '068'
+  title: ''
+  location: Madryt
+  date: '2026-10-09'
+  author: Bartek Brak
+  width: 1500
+  height: 2000
+
+- file: 20261009_04_madryt.webp
+  number: '069'
+  title: ''
+  location: Madryt
+  date: '2026-10-09'
+  author: Bartek Brak
+  width: 2000
+  height: 1500
+
+- file: 20261010_01_madryt.webp
+  number: '070'
+  title: ''
+  location: Madryt
+  date: '2026-10-10'
+  author: Bartek Brak
+  width: 1500
+  height: 2000
+
+- file: 20261010_02_madryt.webp
+  number: '071'
+  title: ''
+  location: Madryt
+  date: '2026-10-10'
+  author: Bartek Brak
+  width: 2000
+  height: 1500
+
+- file: 20261010_03_madryt.webp
+  number: '072'
+  title: ''
+  location: Madryt
+  date: '2026-10-10'
+  author: Bartek Brak
+  width: 2000
+  height: 1500
+
+- file: 20261010_04_madryt.webp
+  number: '073'
+  title: ''
+  location: Madryt
+  date: '2026-10-10'
+  author: Bartek Brak
+  width: 1500
+  height: 2000
+
+- file: 20261011_01_madryt.webp
+  number: '074'
+  title: ''
+  location: Madryt
+  date: '2026-10-11'
+  author: Bartek Brak
+  width: 1500
+  height: 2000
+
+- file: 20261012_01_madryt.webp
+  number: '075'
+  title: 'Właz włazów'
+  location: Madryt
+  date: '2026-10-12'
+  author: oh
+  width: 2000
+  height: 1500
+
+- file: 20261012_02_madryt.webp
+  number: '076'
+  title: ''
+  location: Madryt
+  date: '2026-10-12'
+  author: Bartek Brak
+  width: 1500
+  height: 2000
+
+- file: 20261016_01_warszawa.webp
+  number: '077'
+  title: 'Zachęta'
+  location: Warszawa
+  date: '2026-10-16'
+  author: Bartek Brak
+  width: 2000
+  height: 1500
