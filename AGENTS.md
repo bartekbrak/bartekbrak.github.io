@@ -13,6 +13,7 @@ Najczęstszym zadaniem w tym projekcie jest dodanie nowego zdjęcia do muzeum w�
 4. Umieść obraz w `obrazy/muzeum-włazów-kanalizacyjnych/`.
 5. Dodaj wpis do `muzeum-włazów-kanalizacyjnych.yaml`:
    - `number` to kolejny trzycyfrowy numer eksponatu,
+   - `text` to opcjonalny, także wielowierszowy tekst związany ze zdjęciem; dla braku tekstu użyj pustej wartości,
    - podaj rzeczywiste `width` i `height` obrazu WebP,
    - `title` może pozostać pusty, jeśli zdjęcie nie ma tytułu,
    - opcjonalne `description` dodawaj tylko, gdy nie jest puste.
@@ -20,7 +21,8 @@ Najczęstszym zadaniem w tym projekcie jest dodanie nowego zdjęcia do muzeum w�
    `just museum`
 
 Generator tworzy miniatury w `obrazy/muzeum-włazów-kanalizacyjnych/thumbnails/`, sortuje eksponaty od
-najnowszych i aktualizuje generowaną sekcję w `muzeum-włazów-kanalizacyjnych.html`. Nie edytuj ręcznie
+najnowszych i aktualizuje generowaną sekcję w `muzeum-włazów-kanalizacyjnych.html`. Wypełnione pole `text`
+jest wyświetlane na karcie i w popupie. Nie edytuj ręcznie
 tej sekcji HTML.
 
 ## Ważne pliki

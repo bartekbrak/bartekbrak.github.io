@@ -42,6 +42,7 @@ REQUIRED_FIELDS = {
     "location",
     "date",
     "author",
+    "text",
     "width",
     "height",
 }
@@ -112,7 +113,7 @@ def load_exhibits():
         if filename_match.group(1) != parsed_date.strftime("%Y%m%d"):
             fail(f"data wpisu {file} nie zgadza się z nazwą pliku")
 
-        for field in ("title", "location", "author"):
+        for field in ("title", "location", "author", "text"):
             if not isinstance(exhibit[field], str):
                 fail(f"wpis {file} ma puste lub nieprawidłowe pole {field}")
 
@@ -205,6 +206,13 @@ def render_card(exhibit, first):
     loading = 'decoding="async" fetchpriority="high"' if first else 'loading="lazy" decoding="async"'
     display_date = exhibit["date"].replace("-", ".")
     description = exhibit.get("description", "")
+    text = exhibit["text"]
+    text_preview = text if len(text) <= 150 else f"{text[:150].rstrip()}…"
+    text_markup = (
+        f'              <p class="text" title="{escape(text, quote=True)}">{escape(text_preview)}</p>'
+        if text
+        else ""
+    )
     description_markup = (
         f'              <p class="description">{escape(description)}</p>'
         if description
@@ -215,10 +223,11 @@ def render_card(exhibit, first):
         (
             "        <li>",
             f'          <figure class="card" data-author="{author}" data-location="{location}" {location_style}>',
-            f'            <button class="photo" type="button" data-lightbox-open data-image="{image_url}" data-title="{escape(exhibit["title"], quote=True)}" data-number="{number}" data-author="{author}" data-location="{location}" data-date="{exhibit["date"]}" data-description="{escape(description, quote=True)}" aria-label="Powiększ zdjęcie: eksponat {number}"><img src="{thumbnail_url}" width="{thumbnail_width}" height="{thumbnail_height}" {loading}></button>',
+            f'            <button class="photo" type="button" data-lightbox-open data-image="{image_url}" data-title="{escape(exhibit["title"], quote=True)}" data-number="{number}" data-author="{author}" data-location="{location}" data-date="{exhibit["date"]}" data-text="{escape(text, quote=True)}" data-description="{escape(description, quote=True)}" aria-label="Powiększ zdjęcie: eksponat {number}"><img src="{thumbnail_url}" width="{thumbnail_width}" height="{thumbnail_height}" {loading}></button>',
             "            <figcaption>",
             f'              <span class="number">Eksponat {number}</span><h3>{escape(exhibit["title"])}</h3>',
             f'              <dl><div><dt>Miejsce</dt><dd>{escape(exhibit["location"])}</dd></div><div><dt>Data</dt><dd><time datetime="{exhibit["date"]}">{display_date}</time></dd></div><div><dt>Autor</dt><dd>{escape(exhibit["author"])}</dd></div><div><dt>Plik</dt><dd>{filename}</dd></div><div><dt>Rozmiar</dt><dd>{image_size:.1f} MB</dd></div><div><dt>Rozdzielczość</dt><dd>{exhibit["width"]} × {exhibit["height"]} px</dd></div></dl>',
+            text_markup,
             description_markup,
             "            </figcaption>",
             "          </figure>",

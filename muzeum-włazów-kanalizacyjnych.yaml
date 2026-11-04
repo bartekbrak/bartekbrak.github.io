@@ -2,6 +2,7 @@
 - file: 20260929_01_warszawa.webp
   number: '031'
   title: ''
+  text: ''
   location: Warszawa
   date: '2026-09-29'
   author: Bartek Brak
@@ -10,14 +11,16 @@
 - file: o/20260919_08_salamanka.webp
   number: '029'
   title: ''
+  text: ''
   location: Salamanka
   date: '2026-09-19'
   author: och
-  width: 1500
-  height: 2000
+  width: 2000
+  height: 1500
 - file: o/20260919_07_salamanka.webp
   number: '028'
   title: ''
+  text: ''
   location: Salamanka
   date: '2026-09-19'
   author: och
@@ -26,6 +29,7 @@
 - file: o/20260919_06_salamanka.webp
   number: '027'
   title: ''
+  text: ''
   location: Salamanka
   date: '2026-09-19'
   author: och
@@ -34,6 +38,7 @@
 - file: o/20260919_05_salamanka.webp
   number: '026'
   title: ''
+  text: ''
   location: Salamanka
   date: '2026-09-19'
   author: och
@@ -42,6 +47,7 @@
 - file: o/20260919_04_salamanka.webp
   number: '025'
   title: ''
+  text: ''
   location: Salamanka
   date: '2026-09-19'
   author: och
@@ -50,6 +56,7 @@
 - file: o/20260919_03_salamanka.webp
   number: '024'
   title: ''
+  text: ''
   location: Salamanka
   date: '2026-09-19'
   author: och
@@ -58,6 +65,7 @@
 - file: 20260919_02_warszawa.webp
   number: '023'
   title: ''
+  text: ''
   location: Warszawa
   date: '2026-09-19'
   author: Bartek Brak
@@ -66,6 +74,7 @@
 - file: 20260919_01_warszawa.webp
   number: '022'
   title: ''
+  text: ''
   location: Olbrachcice
   date: '2026-09-19'
   author: Bartek Brak
@@ -74,6 +83,7 @@
 - file: 20260918_03_warszawa.webp
   number: '021'
   title: ''
+  text: ''
   location: Warszawa
   date: '2026-09-18'
   author: Bartek Brak
@@ -82,6 +92,7 @@
 - file: 20260918_02_warszawa.webp
   number: '020'
   title: ''
+  text: ''
   location: Warszawa
   date: '2026-09-18'
   author: Bartek Brak
@@ -90,6 +101,7 @@
 - file: 20260918_01_warszawa.webp
   number: '019'
   title: ''
+  text: ''
   location: Warszawa
   date: '2026-09-18'
   author: Bartek Brak
@@ -98,6 +110,7 @@
 - file: 20260912_01_olbrachcice.webp
   number: '018'
   title: ''
+  text: ''
   location: Olbrachcice
   date: '2026-09-12'
   author: Bartek Brak
@@ -106,14 +119,16 @@
 - file: 20260905_01_skierniewice.webp
   number: '017'
   title: ''
+  text: ''
   location: Skierniewice
   date: '2026-09-05'
   author: Bartek Brak
-  width: 1500
-  height: 2000
+  width: 2000
+  height: 1500
 - file: o/20260904_01_madryt.webp
   number: '016'
   title: ''
+  text: ''
   location: Madryt
   date: '2026-09-04'
   author: och
@@ -122,14 +137,16 @@
 - file: 20260831_02_warszawa.webp
   number: '015'
   title: ''
+  text: ''
   location: Warszawa
   date: '2026-08-31'
   author: Bartek Brak
-  width: 1500
-  height: 2000
+  width: 2000
+  height: 1500
 - file: 20260831_01_warszawa.webp
   number: '014'
   title: ''
+  text: ''
   location: Warszawa
   date: '2026-08-31'
   author: Bartek Brak
@@ -138,6 +155,7 @@
 - file: o/20260829_01_bilbao.webp
   number: '013'
   title: ''
+  text: ''
   location: Bilbao
   date: '2026-08-29'
   author: och
@@ -146,14 +164,16 @@
 - file: 20221008_01_skierniewice.webp
   number: '012'
   title: ''
+  text: ''
   location: Skierniewice
   date: '2022-10-08'
   author: Bartek Brak
-  width: 2000
-  height: 1128
+  width: 1128
+  height: 2000
 - file: 20210417_01_skierniewice.webp
   number: '011'
   title: ''
+  text: ''
   location: Skierniewice
   date: '2021-04-17'
   author: Bartek Brak
@@ -162,14 +182,16 @@
 - file: 20200731_01_sandomierz.webp
   number: '010'
   title: ''
+  text: ''
   location: Sandomierz
   date: '2020-07-31'
   author: Bartek Brak
-  width: 2000
-  height: 1125
+  width: 1125
+  height: 2000
 - file: 20200727_02_warszawa.webp
   number: '009'
   title: ''
+  text: ''
   location: Warszawa
   date: '2020-07-27'
   author: Bartek Brak
@@ -178,6 +200,7 @@
 - file: 20200727_01_warszawa.webp
   number: '008'
   title: ''
+  text: ''
   location: Warszawa
   date: '2020-07-27'
   author: Bartek Brak
@@ -186,38 +209,68 @@
 - file: 20190830_03_caerphilly.webp
   number: '007'
   title: ''
+  text: ''
   location: Caerphilly
   date: '2019-08-30'
   author: Bartek Brak
-  width: 2000
-  height: 1125
+  width: 1125
+  height: 2000
 - file: 20190830_02_caerphilly.webp
   number: '006'
   title: ''
+  text: |
+    ... rates, and one [...] of ...
+    ... arms, one gasingale covered with ...
+    ... furnished with silver, one [...] with white linen, 2 toiles ...
+    ... covered with red velvet with b[ra]nches of the same, girt ...
+    ... silver gilt; one pair of 'plates' covered with white other of woollen ...
+    ... 's arms, namely, one of silk diaper and the other of woollen ...
+    ... s of allettes of the King's ... entail of start, jazerant, ...
+    ... s, one basinet covered ... ver, 4 crests of the ...
+    ... basinet covered ... velvet, one pair of ...
+    ... ing's arms, one pa ... the King's arms, or ...
+    ... batons striped w ... 3, pair of ...
+    ... th pulleys atta ... with red velvet, pa ...
+    ... ingbaud for th ... s, arms.
+    ... e pair of ... armour of iron, ...
+    ... al frettes k ... tall of hide for th ...
+    ... h, one pair of ...
+    ... for trappings, ... d the other of red
+    ... manner with a sil ... rt (1), one girdle of
+    ... white hide, one sword ... ord garnished in the
+    ... -k branches together, with a girdle and scabbard of silver, and ...
+    ... rn, one sword garnished with silver-gilt and enamelled ...
+    ... th a girdle and scabbard of the same pattern, one ...
+    ... th velvet with a girdle of green silk garnished ...
+    ... arms of Lancaster and Holand with ...
+    ... and with a girdle ...
   location: Caerphilly
   date: '2019-08-30'
   author: Bartek Brak
-  width: 2000
-  height: 1125
+  width: 1125
+  height: 2000
 - file: 20190830_01_caerphilly.webp
   number: '005'
   title: ''
+  text: ''
   location: Caerphilly
   date: '2019-08-30'
   author: Bartek Brak
-  width: 2000
-  height: 1125
+  width: 1125
+  height: 2000
 - file: 20190828_01_barry.webp
   number: '004'
   title: ''
+  text: ''
   location: Barry
   date: '2019-08-28'
   author: Bartek Brak
-  width: 2000
-  height: 1125
+  width: 1125
+  height: 2000
 - file: 20190825_01_exeter.webp
   number: '003'
   title: ''
+  text: ''
   location: Exeter
   date: '2019-08-25'
   author: Bartek Brak
@@ -226,6 +279,7 @@
 - file: 20190823_01.webp
   number: '002'
   title: ''
+  text: ''
   location: Nie ustalono
   date: '2019-08-23'
   author: Bartek Brak
@@ -234,6 +288,7 @@
 - file: 20190818_01_bircza.webp
   number: '001'
   title: ''
+  text: ''
   location: Bircza
   date: '2019-08-18'
   author: Bartek Brak
@@ -242,6 +297,7 @@
 - file: 20261025_01_krakow.webp
   number: '034'
   title: ''
+  text: ''
   location: Kraków
   date: '2026-10-25'
   author: Surri
@@ -250,6 +306,7 @@
 - file: 20261018_01_tisnov.webp
   number: '033'
   title: ''
+  text: ''
   location: Tišnov
   date: '2026-10-18'
   author: Karolina
@@ -258,6 +315,7 @@
 - file: 20260930_01.webp
   number: '032'
   title: ''
+  text: ''
   location: Nie ustalono
   date: '2026-09-30'
   author: Surri
@@ -266,6 +324,7 @@
 - file: 20260926_01.webp
   number: '030'
   title: ''
+  text: ''
   location: Nie ustalono
   date: '2026-09-26'
   author: Taffit
@@ -274,6 +333,7 @@
 - file: 20261002_01_warszawa.webp
   number: '035'
   title: ''
+  text: ''
   location: Warszawa
   date: '2026-10-02'
   author: Bartek Brak
@@ -283,6 +343,7 @@
 - file: 20261002_02_skierniewice.webp
   number: '036'
   title: 'Największy właz Skierniewiców'
+  text: ''
   location: Skierniewice
   date: '2026-10-02'
   author: Bartek Brak
@@ -292,6 +353,7 @@
 - file: 20261003_01_milanowek.webp
   number: '037'
   title: ''
+  text: ''
   location: Milanówek
   date: '2026-10-03'
   author: Bartek Brak
@@ -301,6 +363,7 @@
 - file: 20261004_01_grodzisk_mazowiecki.webp
   number: '038'
   title: ''
+  text: ''
   location: Grodzisk Mazowiecki
   date: '2026-10-04'
   author: Bartek Brak
@@ -310,6 +373,7 @@
 - file: 20261004_02_grodzisk_mazowiecki.webp
   number: '039'
   title: ''
+  text: ''
   location: Grodzisk Mazowiecki
   date: '2026-10-04'
   author: Bartek Brak
@@ -319,6 +383,7 @@
 - file: 20261004_03_grodzisk_mazowiecki.webp
   number: '040'
   title: ''
+  text: ''
   location: Grodzisk Mazowiecki
   date: '2026-10-04'
   author: Bartek Brak
@@ -328,6 +393,7 @@
 - file: 20261004_04.webp
   number: '041'
   title: ''
+  text: ''
   location: Guadalajara
   date: '2026-10-04'
   author: och
@@ -337,6 +403,7 @@
 - file: 20261004_05.webp
   number: '042'
   title: ''
+  text: ''
   location: Guadalajara
   date: '2026-10-04'
   author: och
@@ -346,6 +413,7 @@
 - file: 20261004_06.webp
   number: '043'
   title: ''
+  text: ''
   location: Guadalajara
   date: '2026-10-04'
   author: och
@@ -355,6 +423,7 @@
 - file: 20261004_07.webp
   number: '044'
   title: ''
+  text: ''
   location: Madryt
   date: '2026-10-04'
   author: och
@@ -364,6 +433,7 @@
 - file: 20261006_01_barcelona.webp
   number: '045'
   title: ''
+  text: ''
   location: Barcelona
   date: '2026-10-06'
   author: Bartek Brak
@@ -373,6 +443,7 @@
 - file: 20261006_02_barcelona.webp
   number: '046'
   title: ''
+  text: ''
   location: Barcelona
   date: '2026-10-06'
   author: Bartek Brak
@@ -382,6 +453,7 @@
 - file: 20261006_03_barcelona.webp
   number: '047'
   title: ''
+  text: ''
   location: Barcelona
   date: '2026-10-06'
   author: Bartek Brak
@@ -391,6 +463,7 @@
 - file: 20261006_04_barcelona.webp
   number: '048'
   title: ''
+  text: ''
   location: Barcelona
   date: '2026-10-06'
   author: Bartek Brak
@@ -400,6 +473,7 @@
 - file: 20261006_05_barcelona.webp
   number: '049'
   title: ''
+  text: ''
   location: Barcelona
   date: '2026-10-06'
   author: Bartek Brak
@@ -409,6 +483,7 @@
 - file: 20261006_06_barcelona.webp
   number: '050'
   title: ''
+  text: ''
   location: Barcelona
   date: '2026-10-06'
   author: Bartek Brak
@@ -418,6 +493,7 @@
 - file: 20261006_07_barcelona.webp
   number: '051'
   title: ''
+  text: ''
   location: Barcelona
   date: '2026-10-06'
   author: Bartek Brak
@@ -427,6 +503,7 @@
 - file: 20261007_01_barcelona.webp
   number: '052'
   title: ''
+  text: ''
   location: Barcelona
   date: '2026-10-07'
   author: Bartek Brak
@@ -436,6 +513,7 @@
 - file: 20261007_02_barcelona.webp
   number: '053'
   title: ''
+  text: ''
   location: Barcelona
   date: '2026-10-07'
   author: Bartek Brak
@@ -445,6 +523,7 @@
 - file: 20261007_03_barcelona.webp
   number: '054'
   title: ''
+  text: ''
   location: Barcelona
   date: '2026-10-07'
   author: Bartek Brak
@@ -454,6 +533,7 @@
 - file: 20261008_01_saragossa.webp
   number: '055'
   title: ''
+  text: ''
   location: Saragossa
   date: '2026-10-08'
   author: Bartek Brak
@@ -463,6 +543,7 @@
 - file: 20261008_02_saragossa.webp
   number: '056'
   title: ''
+  text: ''
   location: Saragossa
   date: '2026-10-08'
   author: Bartek Brak
@@ -472,6 +553,7 @@
 - file: 20261008_03_saragossa.webp
   number: '057'
   title: ''
+  text: ''
   location: Saragossa
   date: '2026-10-08'
   author: Bartek Brak
@@ -481,6 +563,7 @@
 - file: 20261008_04_saragossa.webp
   number: '058'
   title: ''
+  text: ''
   location: Saragossa
   date: '2026-10-08'
   author: Bartek Brak
@@ -490,24 +573,17 @@
 - file: 20261008_05_saragossa.webp
   number: '059'
   title: ''
+  text: ''
   location: Saragossa
   date: '2026-10-08'
   author: Bartek Brak
   width: 1500
   height: 2000
 
-- file: 20261008_06_saragossa.webp
-  number: '060'
-  title: ''
-  location: Saragossa
-  date: '2026-10-08'
-  author: Bartek Brak
-  width: 2000
-  height: 1867
-
 - file: 20261008_07_saragossa.webp
   number: '061'
   title: ''
+  text: ''
   location: Saragossa
   date: '2026-10-08'
   author: Bartek Brak
@@ -517,6 +593,7 @@
 - file: 20261008_08_saragossa.webp
   number: '062'
   title: ''
+  text: ''
   location: Saragossa
   date: '2026-10-08'
   author: Bartek Brak
@@ -526,6 +603,7 @@
 - file: 20261008_09_saragossa.webp
   number: '063'
   title: ''
+  text: ''
   location: Saragossa
   date: '2026-10-08'
   author: Bartek Brak
@@ -535,6 +613,7 @@
 - file: 20261008_10_saragossa.webp
   number: '064'
   title: ''
+  text: ''
   location: Saragossa
   date: '2026-10-08'
   author: Bartek Brak
@@ -544,6 +623,7 @@
 - file: 20261008_11_saragossa.webp
   number: '065'
   title: ''
+  text: ''
   location: Saragossa
   date: '2026-10-08'
   author: Bartek Brak
@@ -553,6 +633,7 @@
 - file: 20261009_01_madryt.webp
   number: '066'
   title: ''
+  text: ''
   location: Madryt
   date: '2026-10-09'
   author: Bartek Brak
@@ -562,6 +643,7 @@
 - file: 20261009_02_madryt.webp
   number: '067'
   title: ''
+  text: ''
   location: Madryt
   date: '2026-10-09'
   author: Bartek Brak
@@ -571,6 +653,7 @@
 - file: 20261009_03_madryt.webp
   number: '068'
   title: ''
+  text: ''
   location: Madryt
   date: '2026-10-09'
   author: Bartek Brak
@@ -580,6 +663,7 @@
 - file: 20261009_04_madryt.webp
   number: '069'
   title: ''
+  text: ''
   location: Madryt
   date: '2026-10-09'
   author: Bartek Brak
@@ -589,6 +673,7 @@
 - file: 20261010_01_madryt.webp
   number: '070'
   title: ''
+  text: ''
   location: Madryt
   date: '2026-10-10'
   author: Bartek Brak
@@ -598,6 +683,7 @@
 - file: 20261010_02_madryt.webp
   number: '071'
   title: ''
+  text: ''
   location: Madryt
   date: '2026-10-10'
   author: Bartek Brak
@@ -607,6 +693,7 @@
 - file: 20261010_03_madryt.webp
   number: '072'
   title: ''
+  text: ''
   location: Madryt
   date: '2026-10-10'
   author: Bartek Brak
@@ -616,6 +703,7 @@
 - file: 20261010_04_madryt.webp
   number: '073'
   title: ''
+  text: ''
   location: Madryt
   date: '2026-10-10'
   author: Bartek Brak
@@ -625,6 +713,7 @@
 - file: 20261011_01_madryt.webp
   number: '074'
   title: ''
+  text: ''
   location: Madryt
   date: '2026-10-11'
   author: Bartek Brak
@@ -634,6 +723,7 @@
 - file: 20261012_01_madryt.webp
   number: '075'
   title: 'Właz włazów'
+  text: ''
   location: Madryt
   date: '2026-10-12'
   author: och
@@ -643,6 +733,7 @@
 - file: 20261012_02_madryt.webp
   number: '076'
   title: ''
+  text: ''
   location: Madryt
   date: '2026-10-12'
   author: Bartek Brak
@@ -652,6 +743,7 @@
 - file: 20261016_01_warszawa.webp
   number: '077'
   title: 'Zachęta'
+  text: ''
   location: Warszawa
   date: '2026-10-16'
   author: Bartek Brak
@@ -661,6 +753,7 @@
 - file: 20261024_01_piza.webp
   number: '078'
   title: 'Nawet Janek mi jeden właz przesłał z wakacji'
+  text: ''
   location: Piza
   date: '2026-10-24'
   author: Janek
