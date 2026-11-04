@@ -233,8 +233,11 @@ def render_gallery(exhibits):
 
     author_counts = Counter(exhibit["author"] for exhibit in exhibits)
     location_counts = Counter(exhibit["location"] for exhibit in exhibits)
-    authors = sorted(author_counts, key=str.casefold)
-    locations = sorted(location_counts, key=str.casefold)
+    authors = sorted(author_counts, key=lambda author: (-author_counts[author], author.casefold()))
+    locations = sorted(
+        location_counts,
+        key=lambda location: (-location_counts[location], location.casefold()),
+    )
     cards = [
         render_card(exhibit, index == 0)
         for index, exhibit in enumerate(exhibits)
