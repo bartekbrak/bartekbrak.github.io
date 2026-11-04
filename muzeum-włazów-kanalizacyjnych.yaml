@@ -66,7 +66,7 @@
 - file: 20260919_01_warszawa.webp
   number: '022'
   title: ''
-  location: Warszawa
+  location: Olbrachcice
   date: '2026-09-19'
   author: Bartek Brak
   width: 2000
@@ -657,3 +657,12 @@
   author: Bartek Brak
   width: 2000
   height: 1500
+
+- file: 20261024_01_piza.webp
+  number: '078'
+  title: 'Nawet Janek mi jeden właz przesłał z wakacji'
+  location: Piza
+  date: '2026-10-24'
+  author: Janek
+  width: 1500
+  height: 2000
