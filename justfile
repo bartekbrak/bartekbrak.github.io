@@ -1,6 +1,10 @@
 default:
     @just --list
 
+save:
+    git pull
+    -git commit . -m "$(date +%Y.%m.%d)" -e && git push
+
 # Render Markdown pages and stage the sources and generated HTML.
 compile:
     find md -name '*.md' -print0 | xargs -0 -r uv run --script md_to_html.py
