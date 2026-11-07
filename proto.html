@@ -74,10 +74,19 @@
   </dialog>
 
   <script type="importmap">
-    { "imports": { "three": "https://unpkg.com/three@0.187.0/build/three.module.js" } }
+    {
+      "imports": {
+        "three": "https://unpkg.com/three@0.187.0/build/three.module.js",
+        "three/addons/": "https://unpkg.com/three@0.187.0/examples/jsm/"
+      }
+    }
   </script>
   <script type="module">
     import * as THREE from 'three';
+    import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
+    import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
+    import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
+    import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
     const museumExhibits = [{"image":"obrazy/muzeum-włazów-kanalizacyjnych/20261024_01_piza.webp","title":"Nawet Janek mi jeden właz przesłał z wakacji","number":"078","location":"Piza","author":"Janek","date":"2026-10-24"},{"image":"obrazy/muzeum-włazów-kanalizacyjnych/20261016_01_warszawa.webp","title":"Zachęta","number":"077","location":"Warszawa","author":"Bartek Brak","date":"2026-10-16"},{"image":"obrazy/muzeum-włazów-kanalizacyjnych/20261012_02_madryt.webp","title":"","number":"076","location":"Madryt","author":"Bartek Brak","date":"2026-10-12"},{"image":"obrazy/muzeum-włazów-kanalizacyjnych/20261012_01_madryt.webp","title":"Właz włazów","number":"075","location":"Madryt","author":"och","date":"2026-10-12"},{"image":"obrazy/muzeum-włazów-kanalizacyjnych/20261011_01_madryt.webp","title":"","number":"074","location":"Madryt","author":"Bartek Brak","date":"2026-10-11"},{"image":"obrazy/muzeum-włazów-kanalizacyjnych/20261010_04_madryt.webp","title":"","number":"073","location":"Madryt","author":"Bartek Brak","date":"2026-10-10"},{"image":"obrazy/muzeum-włazów-kanalizacyjnych/20261010_03_madryt.webp","title":"","number":"072","location":"Madryt","author":"Bartek Brak","date":"2026-10-10"},{"image":"obrazy/muzeum-włazów-kanalizacyjnych/20261010_02_madryt.webp","title":"","number":"071","location":"Madryt","author":"Bartek Brak","date":"2026-10-10"},{"image":"obrazy/muzeum-włazów-kanalizacyjnych/20261010_01_madryt.webp","title":"","number":"070","location":"Madryt","author":"Bartek Brak","date":"2026-10-10"},{"image":"obrazy/muzeum-włazów-kanalizacyjnych/20261009_04_madryt.webp","title":"","number":"069","location":"Madryt","author":"Bartek Brak","date":"2026-10-09"},{"image":"obrazy/muzeum-włazów-kanalizacyjnych/20261009_03_madryt.webp","title":"","number":"068","location":"Madryt","author":"Bartek Brak","date":"2026-10-09"},{"image":"obrazy/muzeum-włazów-kanalizacyjnych/20261009_02_madryt.webp","title":"","number":"067","location":"Madryt","author":"Bartek Brak","date":"2026-10-09"},{"image":"obrazy/muzeum-włazów-kanalizacyjnych/20261009_01_madryt.webp","title":"","number":"066","location":"Madryt","author":"Bartek Brak","date":"2026-10-09"},{"image":"obrazy/muzeum-włazów-kanalizacyjnych/20261008_11_saragossa.webp","title":"","number":"065","location":"Saragossa","author":"Bartek Brak","date":"2026-10-08"},{"image":"obrazy/muzeum-włazów-kanalizacyjnych/20261008_10_saragossa.webp","title":"","number":"064","location":"Saragossa","author":"Bartek Brak","date":"2026-10-08"},{"image":"obrazy/muzeum-włazów-kanalizacyjnych/20261008_09_saragossa.webp","title":"","number":"063","location":"Saragossa","author":"Bartek Brak","date":"2026-10-08"},{"image":"obrazy/muzeum-włazów-kanalizacyjnych/20261008_08_saragossa.webp","title":"","number":"062","location":"Saragossa","author":"Bartek Brak","date":"2026-10-08"},{"image":"obrazy/muzeum-włazów-kanalizacyjnych/20261008_07_saragossa.webp","title":"","number":"061","location":"Saragossa","author":"Bartek Brak","date":"2026-10-08"},{"image":"obrazy/muzeum-włazów-kanalizacyjnych/20261008_05_saragossa.webp","title":"","number":"059","location":"Saragossa","author":"Bartek Brak","date":"2026-10-08"},{"image":"obrazy/muzeum-włazów-kanalizacyjnych/20261008_04_saragossa.webp","title":"","number":"058","location":"Saragossa","author":"Bartek Brak","date":"2026-10-08"},{"image":"obrazy/muzeum-włazów-kanalizacyjnych/20261008_03_saragossa.webp","title":"","number":"057","location":"Saragossa","author":"Bartek Brak","date":"2026-10-08"},{"image":"obrazy/muzeum-włazów-kanalizacyjnych/20261008_02_saragossa.webp","title":"","number":"056","location":"Saragossa","author":"Bartek Brak","date":"2026-10-08"},{"image":"obrazy/muzeum-włazów-kanalizacyjnych/20261008_01_saragossa.webp","title":"","number":"055","location":"Saragossa","author":"Bartek Brak","date":"2026-10-08"},{"image":"obrazy/muzeum-włazów-kanalizacyjnych/20261007_03_barcelona.webp","title":"","number":"054","location":"Barcelona","author":"Bartek Brak","date":"2026-10-07"},{"image":"obrazy/muzeum-włazów-kanalizacyjnych/20261007_02_barcelona.webp","title":"","number":"053","location":"Barcelona","author":"Bartek Brak","date":"2026-10-07"},{"image":"obrazy/muzeum-włazów-kanalizacyjnych/20261007_01_barcelona.webp","title":"","number":"052","location":"Barcelona","author":"Bartek Brak","date":"2026-10-07"},{"image":"obrazy/muzeum-włazów-kanalizacyjnych/20261006_07_barcelona.webp","title":"","number":"051","location":"Barcelona","author":"Bartek Brak","date":"2026-10-06"},{"image":"obrazy/muzeum-włazów-kanalizacyjnych/20261006_06_barcelona.webp","title":"","number":"050","location":"Barcelona","author":"Bartek Brak","date":"2026-10-06"},{"image":"obrazy/muzeum-włazów-kanalizacyjnych/20261006_05_barcelona.webp","title":"","number":"049","location":"Barcelona","author":"Bartek Brak","date":"2026-10-06"},{"image":"obrazy/muzeum-włazów-kanalizacyjnych/20261006_04_barcelona.webp","title":"","number":"048","location":"Barcelona","author":"Bartek Brak","date":"2026-10-06"},{"image":"obrazy/muzeum-włazów-kanalizacyjnych/20261006_03_barcelona.webp","title":"","number":"047","location":"Barcelona","author":"Bartek Brak","date":"2026-10-06"},{"image":"obrazy/muzeum-włazów-kanalizacyjnych/20261006_02_barcelona.webp","title":"","number":"046","location":"Barcelona","author":"Bartek Brak","date":"2026-10-06"},{"image":"obrazy/muzeum-włazów-kanalizacyjnych/20261006_01_barcelona.webp","title":"","number":"045","location":"Barcelona","author":"Bartek Brak","date":"2026-10-06"},{"image":"obrazy/muzeum-włazów-kanalizacyjnych/20261004_07.webp","title":"","number":"044","location":"Madryt","author":"och","date":"2026-10-04"},{"image":"obrazy/muzeum-włazów-kanalizacyjnych/20261004_06.webp","title":"","number":"043","location":"Guadalajara","author":"och","date":"2026-10-04"},{"image":"obrazy/muzeum-włazów-kanalizacyjnych/20261004_05.webp","title":"","number":"042","location":"Guadalajara","author":"och","date":"2026-10-04"},{"image":"obrazy/muzeum-włazów-kanalizacyjnych/20261004_04.webp","title":"","number":"041","location":"Guadalajara","author":"och","date":"2026-10-04"},{"image":"obrazy/muzeum-włazów-kanalizacyjnych/20261004_03_grodzisk_mazowiecki.webp","title":"","number":"040","location":"Grodzisk Mazowiecki","author":"Bartek Brak","date":"2026-10-04"},{"image":"obrazy/muzeum-włazów-kanalizacyjnych/20261004_02_grodzisk_mazowiecki.webp","title":"","number":"039","location":"Grodzisk Mazowiecki","author":"Bartek Brak","date":"2026-10-04"},{"image":"obrazy/muzeum-włazów-kanalizacyjnych/20261004_01_grodzisk_mazowiecki.webp","title":"","number":"038","location":"Grodzisk Mazowiecki","author":"Bartek Brak","date":"2026-10-04"},{"image":"obrazy/muzeum-włazów-kanalizacyjnych/20261003_01_milanowek.webp","title":"","number":"037","location":"Milanówek","author":"Bartek Brak","date":"2026-10-03"},{"image":"obrazy/muzeum-włazów-kanalizacyjnych/20261002_02_skierniewice.webp","title":"Największy właz Skierniewiców","number":"036","location":"Skierniewice","author":"Bartek Brak","date":"2026-10-02"},{"image":"obrazy/muzeum-włazów-kanalizacyjnych/20261002_01_warszawa.webp","title":"","number":"035","location":"Warszawa","author":"Bartek Brak","date":"2026-10-02"},{"image":"obrazy/muzeum-włazów-kanalizacyjnych/20261025_01_krakow.webp","title":"","number":"034","location":"Kraków","author":"Surri","date":"2026-10-25"},{"image":"obrazy/muzeum-włazów-kanalizacyjnych/20261018_01_tisnov.webp","title":"","number":"033","location":"Tišnov","author":"Karolina","date":"2026-10-18"},{"image":"obrazy/muzeum-włazów-kanalizacyjnych/20260930_01.webp","title":"","number":"032","location":"Nie ustalono","author":"Surri","date":"2026-09-30"},{"image":"obrazy/muzeum-włazów-kanalizacyjnych/20260929_01_warszawa.webp","title":"","number":"031","location":"Warszawa","author":"Bartek Brak","date":"2026-09-29"},{"image":"obrazy/muzeum-włazów-kanalizacyjnych/20260926_01.webp","title":"","number":"030","location":"Nie ustalono","author":"Taffit","date":"2026-09-26"},{"image":"obrazy/muzeum-włazów-kanalizacyjnych/o/20260919_08_salamanka.webp","title":"","number":"029","location":"Salamanka","author":"och","date":"2026-09-19"},{"image":"obrazy/muzeum-włazów-kanalizacyjnych/o/20260919_07_salamanka.webp","title":"","number":"028","location":"Salamanka","author":"och","date":"2026-09-19"},{"image":"obrazy/muzeum-włazów-kanalizacyjnych/o/20260919_06_salamanka.webp","title":"","number":"027","location":"Salamanka","author":"och","date":"2026-09-19"},{"image":"obrazy/muzeum-włazów-kanalizacyjnych/o/20260919_05_salamanka.webp","title":"","number":"026","location":"Salamanka","author":"och","date":"2026-09-19"},{"image":"obrazy/muzeum-włazów-kanalizacyjnych/o/20260919_04_salamanka.webp","title":"","number":"025","location":"Salamanka","author":"och","date":"2026-09-19"},{"image":"obrazy/muzeum-włazów-kanalizacyjnych/o/20260919_03_salamanka.webp","title":"","number":"024","location":"Salamanka","author":"och","date":"2026-09-19"},{"image":"obrazy/muzeum-włazów-kanalizacyjnych/20260919_02_warszawa.webp","title":"","number":"023","location":"Warszawa","author":"Bartek Brak","date":"2026-09-19"},{"image":"obrazy/muzeum-włazów-kanalizacyjnych/20260919_01_warszawa.webp","title":"","number":"022","location":"Olbrachcice","author":"Bartek Brak","date":"2026-09-19"},{"image":"obrazy/muzeum-włazów-kanalizacyjnych/20260918_03_warszawa.webp","title":"","number":"021","location":"Warszawa","author":"Bartek Brak","date":"2026-09-18"},{"image":"obrazy/muzeum-włazów-kanalizacyjnych/20260918_02_warszawa.webp","title":"","number":"020","location":"Warszawa","author":"Bartek Brak","date":"2026-09-18"},{"image":"obrazy/muzeum-włazów-kanalizacyjnych/20260918_01_warszawa.webp","title":"","number":"019","location":"Warszawa","author":"Bartek Brak","date":"2026-09-18"},{"image":"obrazy/muzeum-włazów-kanalizacyjnych/20260912_01_olbrachcice.webp","title":"","number":"018","location":"Olbrachcice","author":"Bartek Brak","date":"2026-09-12"},{"image":"obrazy/muzeum-włazów-kanalizacyjnych/20260905_01_skierniewice.webp","title":"","number":"017","location":"Skierniewice","author":"Bartek Brak","date":"2026-09-05"},{"image":"obrazy/muzeum-włazów-kanalizacyjnych/o/20260904_01_madryt.webp","title":"","number":"016","location":"Madryt","author":"och","date":"2026-09-04"},{"image":"obrazy/muzeum-włazów-kanalizacyjnych/20260831_02_warszawa.webp","title":"","number":"015","location":"Warszawa","author":"Bartek Brak","date":"2026-08-31"},{"image":"obrazy/muzeum-włazów-kanalizacyjnych/20260831_01_warszawa.webp","title":"","number":"014","location":"Warszawa","author":"Bartek Brak","date":"2026-08-31"},{"image":"obrazy/muzeum-włazów-kanalizacyjnych/o/20260829_01_bilbao.webp","title":"","number":"013","location":"Bilbao","author":"och","date":"2026-08-29"},{"image":"obrazy/muzeum-włazów-kanalizacyjnych/20221008_01_skierniewice.webp","title":"","number":"012","location":"Skierniewice","author":"Bartek Brak","date":"2022-10-08"},{"image":"obrazy/muzeum-włazów-kanalizacyjnych/20210417_01_skierniewice.webp","title":"","number":"011","location":"Skierniewice","author":"Bartek Brak","date":"2021-04-17"},{"image":"obrazy/muzeum-włazów-kanalizacyjnych/20200731_01_sandomierz.webp","title":"","number":"010","location":"Sandomierz","author":"Bartek Brak","date":"2020-07-31"},{"image":"obrazy/muzeum-włazów-kanalizacyjnych/20200727_02_warszawa.webp","title":"","number":"009","location":"Warszawa","author":"Bartek Brak","date":"2020-07-27"},{"image":"obrazy/muzeum-włazów-kanalizacyjnych/20200727_01_warszawa.webp","title":"","number":"008","location":"Warszawa","author":"Bartek Brak","date":"2020-07-27"},{"image":"obrazy/muzeum-włazów-kanalizacyjnych/20190830_03_caerphilly.webp","title":"","number":"007","location":"Caerphilly","author":"Bartek Brak","date":"2019-08-30"},{"image":"obrazy/muzeum-włazów-kanalizacyjnych/20190830_02_caerphilly.webp","title":"","number":"006","location":"Caerphilly","author":"Bartek Brak","date":"2019-08-30"},{"image":"obrazy/muzeum-włazów-kanalizacyjnych/20190830_01_caerphilly.webp","title":"","number":"005","location":"Caerphilly","author":"Bartek Brak","date":"2019-08-30"},{"image":"obrazy/muzeum-włazów-kanalizacyjnych/20190828_01_barry.webp","title":"","number":"004","location":"Barry","author":"Bartek Brak","date":"2019-08-28"},{"image":"obrazy/muzeum-włazów-kanalizacyjnych/20190825_01_exeter.webp","title":"","number":"003","location":"Exeter","author":"Bartek Brak","date":"2019-08-25"},{"image":"obrazy/muzeum-włazów-kanalizacyjnych/20190823_01.webp","title":"","number":"002","location":"Nie ustalono","author":"Bartek Brak","date":"2019-08-23"},{"image":"obrazy/muzeum-włazów-kanalizacyjnych/20190818_01_bircza.webp","title":"","number":"001","location":"Bircza","author":"Bartek Brak","date":"2019-08-18"}];
 
     const canvas = document.querySelector('#museum');
@@ -95,6 +104,8 @@
     });
     renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
     renderer.outputColorSpace = THREE.SRGBColorSpace;
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 1;
     renderer.shadowMap.enabled = false;
     canvas.addEventListener('webglcontextlost', event => {
       event.preventDefault();
@@ -102,9 +113,14 @@
     });
 
     const camera = new THREE.PerspectiveCamera(68, innerWidth / innerHeight, .1, 350);
-    camera.position.set(0, 1.7, 14);
+    camera.position.set(0, 3.35, 14);
     camera.rotation.order = 'YXZ';
     let pitch = 0;
+    const composer = new EffectComposer(renderer);
+    composer.addPass(new RenderPass(scene, camera));
+    const bloomPass = new UnrealBloomPass(new THREE.Vector2(innerWidth, innerHeight), .45, .62, .78);
+    composer.addPass(bloomPass);
+    composer.addPass(new OutputPass());
 
     scene.add(new THREE.HemisphereLight(0xf4f4ee, 0x242832, 2.1));
     const keyLight = new THREE.DirectionalLight(0xffffff, 2.5);
@@ -114,7 +130,6 @@
     const room = new THREE.Group();
     scene.add(room);
     const wallMaterial = new THREE.MeshBasicMaterial({ color: 0x000000, side: THREE.DoubleSide });
-    const partitionMaterial = new THREE.MeshBasicMaterial({ color: 0x050607, transparent: true, opacity: .9, side: THREE.DoubleSide });
     const darkMaterial = new THREE.MeshBasicMaterial({ color: 0x000000, side: THREE.DoubleSide });
     const accentMaterial = new THREE.MeshBasicMaterial({ color: 0x89939b });
 
@@ -166,26 +181,32 @@
 
     const locations = [...new Set(museumExhibits.map(exhibit => exhibit.location))];
     const locationRooms = new Map();
-    const roomCount = Math.ceil(locations.length / 2);
-    const roomBoundaries = [];
     const locationExhibitCounts = new Map(locations.map(location => [
       location,
       museumExhibits.filter(exhibit => exhibit.location === location).length,
     ]));
-    const roomDepth = location => Math.max(22, Math.min(7, locationExhibitCounts.get(location)) * 4.4 + 2);
+    const artworkEdgeClearance = 4;
+    const sectionGap = 10;
+    const roomDepth = location => Math.max(
+      10,
+      Math.max(0, locationExhibitCounts.get(location) - 1) * 4.4 + artworkEdgeClearance * 2
+    );
     const buildingStart = 20;
-    let roomTop = buildingStart;
-    for (let pair = 0; pair < roomCount; pair += 1) {
-      const leftLocation = locations[pair * 2];
-      const rightLocation = locations[pair * 2 + 1];
-      const depth = Math.max(roomDepth(leftLocation), rightLocation ? roomDepth(rightLocation) : 0);
+    const sideRoomTops = new Map([[-1, buildingStart], [1, buildingStart]]);
+    const populatedSides = new Set();
+    locations.forEach((location, index) => {
+      const side = index % 2 === 0 ? -1 : 1;
+      const depth = roomDepth(location);
+      const previousBottom = sideRoomTops.get(side);
+      const dividerZ = populatedSides.has(side) ? previousBottom - sectionGap / 2 : null;
+      const roomTop = previousBottom - (dividerZ === null ? 0 : sectionGap);
       const centerZ = roomTop - depth / 2;
-      locationRooms.set(leftLocation, { location: leftLocation, side: -1, centerZ, depth });
-      if (rightLocation) locationRooms.set(rightLocation, { location: rightLocation, side: 1, centerZ, depth });
-      roomTop -= depth;
-      roomBoundaries.push(roomTop);
-    }
-    const buildingEnd = roomTop;
+      const roomBottom = roomTop - depth;
+      locationRooms.set(location, { location, side, centerZ, depth, top: roomTop, bottom: roomBottom, dividerZ });
+      sideRoomTops.set(side, roomBottom);
+      populatedSides.add(side);
+    });
+    const buildingEnd = Math.min(...sideRoomTops.values());
     const buildingLength = buildingStart - buildingEnd;
     const buildingCenter = (buildingStart + buildingEnd) / 2;
     floorTexture.repeat.set(5, buildingLength / 10);
@@ -195,7 +216,7 @@
     plane(32, buildingLength, [0, 8.8, buildingCenter], [Math.PI / 2, 0, 0], darkMaterial);
     plane(buildingLength, 9, [-16, 4.5, buildingCenter], [0, Math.PI / 2, 0], wallMaterial);
     plane(buildingLength, 9, [16, 4.5, buildingCenter], [0, -Math.PI / 2, 0], wallMaterial);
-    plane(32, 9, [0, 4.5, buildingEnd], [0, 0, 0], partitionMaterial);
+    plane(32, 9, [0, 4.5, buildingEnd], [0, 0, 0], wallMaterial);
     const entranceWall = plane(32, 9, [0, 4.5, buildingStart], [0, 0, 0], wallMaterial);
 
     const entranceTextCanvas = document.createElement('canvas');
@@ -255,12 +276,6 @@
     room.add(entranceTextPanel);
     const entranceMusicTargets = [entranceWall, entranceTextPanel];
 
-    // Każdy próg dzieli dwie sale, ale zostawia wąskie przejście na osi muzeum.
-    for (const boundary of roomBoundaries) {
-      plane(12, 9, [-10, 4.5, boundary], [0, 0, 0], partitionMaterial);
-      plane(12, 9, [10, 4.5, boundary], [0, 0, 0], partitionMaterial);
-    }
-
     const ceiling = new THREE.Mesh(
       new THREE.PlaneGeometry(32, 190),
       new THREE.MeshBasicMaterial({ color: 0x000000, side: THREE.DoubleSide })
@@ -302,6 +317,7 @@
       museumExhibits.filter(exhibit => exhibit.location === location).length,
     ]));
     const locationCursors = new Map(locations.map(location => [location, 0]));
+    const wideGlowExhibits = new Set(['075', '076', '036']);
 
     // Przeglądarka blokuje lokalne pliki graficzne przy otwarciu przez file://.
     // Wtedy korzystamy z kopii dostępnej pod docelowym adresem strony.
@@ -346,54 +362,178 @@
     }
 
     function addRoomSign(roomInfo) {
-      const signCanvas = document.createElement('canvas');
-      signCanvas.width = 1024;
-      signCanvas.height = 128;
-      const signContext = signCanvas.getContext('2d');
-      signContext.fillStyle = '#171a1d';
-      signContext.fillRect(0, 0, 1024, 128);
-      signContext.fillStyle = '#f0f1ed';
-      signContext.font = '700 46px system-ui, sans-serif';
-      signContext.textAlign = 'center';
-      signContext.textBaseline = 'middle';
-      signContext.fillText(roomInfo.location.toUpperCase(), 512, 64);
-      const sign = new THREE.Mesh(
-        new THREE.PlaneGeometry(7, .9),
-        new THREE.MeshBasicMaterial({ map: new THREE.CanvasTexture(signCanvas), side: THREE.DoubleSide })
+      const textCanvas = document.createElement('canvas');
+      textCanvas.width = 1024;
+      textCanvas.height = 128;
+      const textContext = textCanvas.getContext('2d');
+      textContext.fillStyle = '#ffffff';
+      textContext.font = '700 58px system-ui, sans-serif';
+      textContext.textAlign = 'center';
+      textContext.textBaseline = 'middle';
+      textContext.save();
+      textContext.translate(512, 64);
+      textContext.scale(1.15, 1);
+      textContext.fillText(roomInfo.location.toUpperCase(), 0, 0);
+      textContext.restore();
+      const textTexture = new THREE.CanvasTexture(textCanvas);
+      textTexture.colorSpace = THREE.SRGBColorSpace;
+
+      const glowCanvas = document.createElement('canvas');
+      glowCanvas.width = 1024;
+      glowCanvas.height = 128;
+      const glowContext = glowCanvas.getContext('2d');
+      glowContext.fillStyle = '#ffffff';
+      glowContext.shadowColor = '#ffffff';
+      glowContext.shadowBlur = 24;
+      glowContext.font = '700 58px system-ui, sans-serif';
+      glowContext.textAlign = 'center';
+      glowContext.textBaseline = 'middle';
+      glowContext.save();
+      glowContext.translate(512, 64);
+      glowContext.scale(1.15, 1);
+      glowContext.fillText(roomInfo.location.toUpperCase(), 0, 0);
+      glowContext.restore();
+      const glowTexture = new THREE.CanvasTexture(glowCanvas);
+      glowTexture.colorSpace = THREE.SRGBColorSpace;
+
+      const rotation = roomInfo.side === -1 ? Math.PI / 2 : -Math.PI / 2;
+      const backing = new THREE.Mesh(
+        new THREE.BoxGeometry(7, .9, .22),
+        new THREE.MeshBasicMaterial({ color: 0x111417 })
       );
-      sign.position.set(roomInfo.side * 15.7, 7.65, roomInfo.centerZ);
-      sign.rotation.y = roomInfo.side === -1 ? Math.PI / 2 : -Math.PI / 2;
-      room.add(sign);
+      backing.position.set(roomInfo.side * 15.82, 7.65, roomInfo.centerZ);
+      backing.rotation.y = rotation;
+      room.add(backing);
+
+      const face = new THREE.Mesh(
+        new THREE.PlaneGeometry(6.94, .84),
+        new THREE.MeshBasicMaterial({ color: 0x1a1d20, side: THREE.DoubleSide })
+      );
+      face.position.set(roomInfo.side * 15.69, 7.65, roomInfo.centerZ);
+      face.rotation.y = rotation;
+      room.add(face);
+
+      const textDepth = new THREE.Mesh(
+        new THREE.PlaneGeometry(6.74, .7),
+        new THREE.MeshBasicMaterial({ map: textTexture, color: 0x681018, transparent: true, side: THREE.DoubleSide })
+      );
+      textDepth.position.set(roomInfo.side * 15.63, 7.65, roomInfo.centerZ);
+      textDepth.rotation.y = rotation;
+      room.add(textDepth);
+
+      const textGlow = new THREE.Mesh(
+        new THREE.PlaneGeometry(6.74, .7),
+        new THREE.MeshBasicMaterial({
+          map: glowTexture,
+          color: 0xff2738,
+          transparent: true,
+          opacity: .2,
+          depthWrite: false,
+          blending: THREE.AdditiveBlending,
+          side: THREE.DoubleSide,
+        })
+      );
+      textGlow.position.set(roomInfo.side * 15.59, 7.65, roomInfo.centerZ);
+      textGlow.rotation.y = rotation;
+      room.add(textGlow);
+
+      const textFront = new THREE.Mesh(
+        new THREE.PlaneGeometry(6.74, .7),
+        new THREE.MeshBasicMaterial({ map: textTexture, color: 0xf8f4df, transparent: true, side: THREE.DoubleSide })
+      );
+      textFront.position.set(roomInfo.side * 15.54, 7.65, roomInfo.centerZ);
+      textFront.rotation.y = rotation;
+      room.add(textFront);
     }
 
     locations.forEach(location => addRoomSign(locationRooms.get(location)));
+
+    const dividerCanvas = document.createElement('canvas');
+    dividerCanvas.width = 128;
+    dividerCanvas.height = 1024;
+    const dividerContext = dividerCanvas.getContext('2d');
+    dividerContext.strokeStyle = '#ff5260';
+    dividerContext.lineWidth = 10;
+    dividerContext.shadowColor = '#e40c20';
+    dividerContext.shadowBlur = 30;
+    dividerContext.beginPath();
+    dividerContext.moveTo(64, 28);
+    dividerContext.lineTo(64, 996);
+    dividerContext.stroke();
+    const dividerTexture = new THREE.CanvasTexture(dividerCanvas);
+    dividerTexture.colorSpace = THREE.SRGBColorSpace;
+
+    for (const roomInfo of locationRooms.values()) {
+      if (roomInfo.dividerZ === null) continue;
+      const divider = new THREE.Mesh(
+        new THREE.PlaneGeometry(.8, 7.6),
+        new THREE.MeshBasicMaterial({
+          map: dividerTexture,
+          transparent: true,
+          opacity: 2,
+          depthWrite: false,
+          blending: THREE.AdditiveBlending,
+          side: THREE.DoubleSide,
+        })
+      );
+      divider.position.set(roomInfo.side * 15.62, 4.3, roomInfo.dividerZ);
+      divider.rotation.y = roomInfo.side === -1 ? Math.PI / 2 : -Math.PI / 2;
+      room.add(divider);
+    }
 
     function addArtwork(exhibit, index) {
       const roomInfo = locationRooms.get(exhibit.location);
       const locationIndex = locationCursors.get(exhibit.location);
       locationCursors.set(exhibit.location, locationIndex + 1);
-      const columns = Math.min(7, locationCounts.get(exhibit.location));
+      const columns = locationCounts.get(exhibit.location);
       const column = locationIndex % columns;
-      const row = Math.floor(locationIndex / columns);
       const side = roomInfo.side;
-      const zSpacing = columns === 1 ? 0 : Math.min(4.4, (roomInfo.depth - 2) / (columns - 1));
+      const zSpacing = columns === 1 ? 0 : (roomInfo.depth - 2) / (columns - 1);
       const z = roomInfo.centerZ + (column - (columns - 1) / 2) * zSpacing;
-      const frameY = 3.35 + row * 3;
+      const frameY = 3.35;
+      const frameMaterial = new THREE.MeshStandardMaterial({
+        color: 0x171a1d,
+        roughness: .55,
+      });
       const frame = new THREE.Mesh(
-        new THREE.BoxGeometry(4.1, 3.2, .14),
-        new THREE.MeshStandardMaterial({ color: 0x171a1d, roughness: .55 })
+        new THREE.BoxGeometry(4.1, 3.2, .28),
+        frameMaterial
       );
-      frame.position.set(side * 15.82, frameY, z);
+      frame.position.set(side * 15.86, frameY, z);
       frame.rotation.y = side === -1 ? Math.PI / 2 : -Math.PI / 2;
       frame.userData.baseScale = 1;
       room.add(frame);
+      const edgeMaterial = new THREE.MeshStandardMaterial({
+        color: 0x211c10,
+        roughness: .45,
+        emissive: 0x000000,
+        emissiveIntensity: 0,
+      });
+      const edgeThickness = wideGlowExhibits.has(exhibit.number) ? .11 : .0275;
+      for (const localX of [-1.95, 1.95]) {
+        const edge = new THREE.Mesh(new THREE.BoxGeometry(edgeThickness, 3.16, .34), edgeMaterial);
+        edge.position.set(side * 15.86, frameY, z - Math.sin(frame.rotation.y) * localX);
+        edge.rotation.y = frame.rotation.y;
+        room.add(edge);
+      }
+      for (const localY of [-1.55, 1.55]) {
+        const edge = new THREE.Mesh(new THREE.BoxGeometry(4, edgeThickness, .34), edgeMaterial);
+        edge.position.set(side * 15.86, frameY + localY, z);
+        edge.rotation.y = frame.rotation.y;
+        room.add(edge);
+      }
+      frame.userData.exhibit = exhibit;
+      frame.userData.frame = frame;
+      frame.userData.frameMaterial = edgeMaterial;
+      artwork.push(frame);
 
       const material = new THREE.MeshBasicMaterial({ color: 0x9da1a2, side: THREE.DoubleSide });
       const image = new THREE.Mesh(new THREE.PlaneGeometry(3.7, 2.8), material);
-      image.position.set(side * 15.72, frameY, z);
+      image.position.set(side * 15.68, frameY, z);
       image.rotation.y = frame.rotation.y;
       image.userData.exhibit = exhibit;
       image.userData.frame = frame;
+      image.userData.frameMaterial = edgeMaterial;
       image.userData.baseScale = 1;
       image.userData.aspect = 3.7 / 2.8;
       room.add(image);
@@ -403,16 +543,18 @@
       labelCanvas.width = 1024;
       labelCanvas.height = 128;
       const labelContext = labelCanvas.getContext('2d');
-      labelContext.fillStyle = '#e8e9e5';
+      labelContext.fillStyle = '#b5b7b1';
       labelContext.font = '600 42px system-ui, sans-serif';
       labelContext.textAlign = 'center';
       labelContext.textBaseline = 'middle';
       labelContext.fillText(`${exhibit.number} · ${exhibit.location} · ${exhibit.date} · ${exhibit.author}`, 512, 64);
+      const labelTexture = new THREE.CanvasTexture(labelCanvas);
+      labelTexture.colorSpace = THREE.SRGBColorSpace;
       const label = new THREE.Mesh(
         new THREE.PlaneGeometry(3.7, .46),
-        new THREE.MeshBasicMaterial({ map: new THREE.CanvasTexture(labelCanvas), side: THREE.DoubleSide })
+        new THREE.MeshBasicMaterial({ map: labelTexture, side: THREE.DoubleSide })
       );
-      label.position.set(side * 15.7, frameY - 2.1, z);
+      label.position.set(side * 15.66, frameY - 2.1, z);
       label.rotation.y = frame.rotation.y;
       room.add(label);
 
@@ -484,13 +626,13 @@
       const next = hit?.object ?? null;
       if (next === focusedArtwork) return;
       if (focusedArtwork) {
-        focusedArtwork.scale.setScalar(1);
-        focusedArtwork.userData.frame.scale.setScalar(1);
+        focusedArtwork.userData.frameMaterial.emissive.setHex(0x000000);
+        focusedArtwork.userData.frameMaterial.emissiveIntensity = 0;
       }
       focusedArtwork = next;
       if (focusedArtwork) {
-        focusedArtwork.scale.setScalar(1.055);
-        focusedArtwork.userData.frame.scale.setScalar(1.055);
+        focusedArtwork.userData.frameMaterial.emissive.setHex(0xffcf28);
+        focusedArtwork.userData.frameMaterial.emissiveIntensity = 1.25;
       }
     }
 
@@ -580,6 +722,7 @@
 
     function resize() {
       renderer.setSize(innerWidth, innerHeight, false);
+      composer.setSize(innerWidth, innerHeight);
       camera.aspect = innerWidth / innerHeight;
       camera.updateProjectionMatrix();
     }
@@ -613,14 +756,10 @@
       );
       let nextZ = camera.position.z - Math.cos(yaw) * forward * moveSpeed - Math.sin(yaw) * strafe * moveSpeed;
       nextZ = THREE.MathUtils.clamp(nextZ, buildingEnd + 3, buildingStart - 3);
-      const crossesWall = roomBoundaries.some(boundary =>
-        (camera.position.z - boundary) * (nextZ - boundary) <= 0
-      );
-      if (crossesWall && Math.abs(nextX) > 3.2) nextZ = camera.position.z;
       camera.position.x = nextX;
       camera.position.z = nextZ;
       updateFocus();
-      renderer.render(scene, camera);
+      composer.render();
     }
 
     animate();
