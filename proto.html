@@ -74,7 +74,7 @@
   </dialog>
 
   <script type="importmap">
-    { "imports": { "three": "https://unpkg.com/three@0.171.0/build/three.module.js" } }
+    { "imports": { "three": "https://unpkg.com/three@0.187.0/build/three.module.js" } }
   </script>
   <script type="module">
     import * as THREE from 'three';
@@ -84,7 +84,6 @@
     const status = document.querySelector('#status');
     const scene = new THREE.Scene();
     scene.background = new THREE.Color(0x111419);
-    scene.fog = new THREE.Fog(0x111419, 28, 220);
 
     const renderer = new THREE.WebGLRenderer({
       canvas,
@@ -102,7 +101,7 @@
       status.textContent = 'Utracono kontekst WebGL — odśwież stronę';
     });
 
-    const camera = new THREE.PerspectiveCamera(68, innerWidth / innerHeight, .1, 150);
+    const camera = new THREE.PerspectiveCamera(68, innerWidth / innerHeight, .1, 350);
     camera.position.set(0, 1.7, 14);
     camera.rotation.order = 'YXZ';
     let pitch = 0;
@@ -110,7 +109,6 @@
     scene.add(new THREE.HemisphereLight(0xf4f4ee, 0x242832, 2.1));
     const keyLight = new THREE.DirectionalLight(0xffffff, 2.5);
     keyLight.position.set(0, 8, 8);
-    keyLight.castShadow = true;
     scene.add(keyLight);
 
     const room = new THREE.Group();
@@ -162,7 +160,6 @@
       const mesh = new THREE.Mesh(new THREE.PlaneGeometry(width, height), material);
       mesh.position.set(...position);
       mesh.rotation.set(...rotation);
-      mesh.receiveShadow = true;
       room.add(mesh);
       return mesh;
     }
@@ -264,20 +261,6 @@
       plane(12, 9, [10, 4.5, boundary], [0, 0, 0], partitionMaterial);
     }
 
-    // Jedna tekstura zastępuje setki osobnych pól szachownicy.
-    const ceilingCanvas = document.createElement('canvas');
-    ceilingCanvas.width = 128;
-    ceilingCanvas.height = 128;
-    const ceilingContext = ceilingCanvas.getContext('2d');
-    ceilingContext.fillStyle = '#020304';
-    ceilingContext.fillRect(0, 0, 128, 128);
-    ceilingContext.fillStyle = '#181012';
-    ceilingContext.fillRect(0, 0, 64, 64);
-    ceilingContext.fillRect(64, 64, 64, 64);
-    const ceilingTexture = new THREE.CanvasTexture(ceilingCanvas);
-    ceilingTexture.wrapS = THREE.RepeatWrapping;
-    ceilingTexture.wrapT = THREE.RepeatWrapping;
-    ceilingTexture.repeat.set(4, buildingLength / 8);
     const ceiling = new THREE.Mesh(
       new THREE.PlaneGeometry(32, 190),
       new THREE.MeshBasicMaterial({ color: 0x000000, side: THREE.DoubleSide })
@@ -402,7 +385,6 @@
       );
       frame.position.set(side * 15.82, frameY, z);
       frame.rotation.y = side === -1 ? Math.PI / 2 : -Math.PI / 2;
-      frame.castShadow = true;
       frame.userData.baseScale = 1;
       room.add(frame);
 
